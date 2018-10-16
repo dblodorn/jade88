@@ -7,7 +7,7 @@ import { StyledLink } from './../../styles/components'
 
 export default (props) =>
   <ThemeProvider theme={themes[props.theme] || themeA}>
-    <Logo to={'/'} className={props.orientation}>      
+    <Logo to={'/'} className={'logo'}>      
       <svg width="144px" height="144px" viewBox="0 0 144 144" version="1.1" xmlns="http://www.w3.org/2000/svg">
         <g id="Assets" stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
           <g id="Artboard">

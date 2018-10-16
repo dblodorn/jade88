@@ -138,8 +138,8 @@ const StyledMarkup = styled.div`
   }
   p {
     ${_.bodyType};
-    color: ${props => props.theme.body_copy_color};
-    font-family: ${props => props.theme.body_copy_font};
+    color: ${colors.black};
+    font-family: ${fonts.body_copy_font_a};
     margin-bottom: ${spacing.single_pad};
     max-width: ${widths.max_medium};
     &:last-child {
@@ -262,8 +262,8 @@ const CloseButton = styled.button`
 const BuyButton = styled.button`
   ${_.buttonInit};
   ${_.shadow};
-  width: 11rem;
-  height: 11rem;
+  width: ${props => props.size || `11rem`};
+  height: ${props => props.size || `11rem`};
   background-color: ${props => props.bgColor || colors.blue};
   font-family: ${fonts.sans};
   text-transform: uppercase;

@@ -34,13 +34,4 @@ const ProductsWrapper = styled.ul`
   width: 100%;
   min-height: 100%;
   position: relative;
-  li {
-    position: relative;
-    &:nth-child(odd) {
-      padding-right: 15%;
-    }
-    &:nth-child(even) {
-      padding-left: 15%;
-    }
-  }
 `

@@ -17,7 +17,7 @@
     "cart": "50vw"
   },
   "heights": {
-    "header": "6rem",
+    "header": "7rem",
     "mobile_header": "6rem",
     "footer": "6rem",
     "player_icons": "2.5rem"
@@ -32,15 +32,16 @@
     "white": "#ffffff",
     "black": "#222222",
     "grey": "#8f8f8f",
-    "blue": "#005DBA",
+    "blue": "#0000ff",
     "med_grey": "#939393",
     "hover_color": "red",
     "active_color": "purple",
     "lt_grey": "#D8D8D8",
-    "green": "green",
+    "green": "#00FF00",
     "yellow": "#F3E500",
     "red": "#EA0029",
     "magenta": "#ff2bbe",
+    "jade": "#a2d45e",
     "purple": "#8A1A9B",
     "blue_2": "#00A0AF",
     "logo_color_a": "#222222",

@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import styled from 'styled-components'
-import { buttonInit, flexRowCenteredVert, flexColumn } from './../styles/mixins'
+import { flexRowCenteredVert, flexColumn } from './../styles/mixins'
 import { H4, H6, StyledMarkup, BuyButton } from './../styles/components'
 import { widths, colors, fonts, spacing } from './../styles/theme.json'
 import VariantSelector from './VariantSelector'
@@ -50,18 +50,6 @@ class Product extends Component {
   }
 
   render() {
-    
-    const variantStuff = (props) => {
-      return (
-        <div>
-          {variantSelectors}
-          <label className="Product__option">
-            Quantity <input min="1" type="number" defaultValue={variantQuantity} onChange={this.handleQuantityChange}></input>
-          </label>
-        </div>
-      )
-    }
-    
     let variantImage = this.state.selectedVariantImage || this.props.product.images[0]
     let variant = this.state.selectedVariant || this.props.product.variants[0]
     let variantQuantity = this.state.selectedVariantQuantity || 1
@@ -75,23 +63,25 @@ class Product extends Component {
       );
     });
     return (
-      <ProductCard>
+      <ProductCard className={this.props.product.handle}>
         <CardInner>
-          <ProductImage>
+          <ProductImage className={'product-image'}>
             {this.props.product.images.length
               ? <FitImage src={variantImage.src} fit={'contain'}/>
               : null
             }
           </ProductImage>
-          <ProductInfo>
+          <ProductInfo className={'product-info'}>
             <Info>
               <H4>{this.props.product.title}</H4>
               <StyledMarkup dangerouslySetInnerHTML={{__html: this.props.product.descriptionHtml }}/>
-              <H6>${variant.price}</H6>
+              <Price>
+                <H6>${variant.price}</H6>
+              </Price>
+              <BuyButton onClick={() => this.props.addVariantToCart(variant.id, variantQuantity)}>
+                <span>Buy Now</span>
+              </BuyButton>
             </Info>
-            <BuyButton onClick={() => this.props.addVariantToCart(variant.id, variantQuantity)}>
-              <span>Buy Now</span>
-            </BuyButton>
           </ProductInfo>
         </CardInner>
       </ProductCard>
@@ -107,35 +97,75 @@ const ProductCard = styled.li`
   height: 100vh;
   margin: auto;
   position: relative;
+  &:nth-child(odd) {
+    .product-image {
+      right: 0;
+      left: auto;
+    }
+    .product-info {
+      left: 0;
+      right: auto;
+    }
+  }
+  &:nth-child(even) {
+    .product-image {
+      left: 0;
+      right: auto;
+    }
+    .product-info {
+      right: 0;
+      left: auto;
+      justify-content: flex-end;
+    }
+  }
+  &.green-jade-roller {
+    background-color: ${colors.jade};
+    button {
+      background-color: ${colors.magenta};
+    }
+  }
+  &.rose-quartz-roller {
+    background-color: ${colors.magenta};
+    button {
+      background-color: ${colors.green};
+    }
+  }
+  &.white-jade-roller {
+    background-color: ${colors.white};
+  }
 `
 
 const CardInner = styled.div`
-  ${flexRowCenteredVert};
   width: 100%;
   height: 100%;
-  max-width: 90rem;
+  max-width: 75rem;
   margin: auto;
   padding-top: 10%;
   position: relative;
 `
 
 const ProductImage = styled.div`
-  width: 65%;
+  width: 35%;
   height: 80%;
   position: absolute;
-  right: 0;
   top: 0;
   bottom: 0;
   margin: auto;
 `
 
 const ProductInfo = styled.div`
-  width: 100%;
-  position: relative;
+  ${flexRowCenteredVert};
+  width: 75%;
+  height: 100%;
+  position: absolute;
+  top: 0;
 `
 
 const Info = styled.div`
   ${flexColumn};
   max-width: 50rem;
+`
+
+const Price = styled.div`
   padding-bottom: ${spacing.double_pad};
 `

@@ -15,6 +15,9 @@ export default (props) =>
         <HeaderTop>
           <Logo theme={'a'} title={meta_defaults.title} orientation={props.orientation}/>
         </HeaderTop>
+        <HeaderBottom>
+          <Logo theme={'a'} title={meta_defaults.title} orientation={props.orientation}/>
+        </HeaderBottom>
       </HeaderWrapperSidebar>
     )}
   </Transition>
@@ -38,5 +41,16 @@ const HeaderWrapperSidebar = styled.header`
 `
 
 const HeaderTop = styled.div`
-  position: relative;
+  position: absolute;
+  top: 0;
+  left: 0;
+`
+
+const HeaderBottom = styled.div`
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  .logo {
+    transform: rotate(90deg);
+  }
 `

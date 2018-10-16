@@ -2,7 +2,7 @@ import React, { Component, Fragment } from 'react'
 import { connect } from 'react-redux'
 import styled from 'styled-components'
 import { Transition } from 'react-spring'
-import { mainPadding, flexCenteredAll, fancyScroll, flexRow, flexRowCenteredVert, buttonInit, smallType, shadow, transTransform, flexColumn  } from './../styles/mixins'
+import { mainPadding, flexCenteredAll, fancyScroll, flexRow, flexRowCenteredVert, shadow, transTransform, flexColumn, media  } from './../styles/mixins'
 import { H2, BuyButton } from './../styles/components'
 import { Close } from './../components'
 import { widths, heights, shared, colors, spacing } from './../styles/theme.json'
@@ -47,7 +47,7 @@ class Cart extends Component {
           <CartItems>
             {line_items}
           </CartItems>
-          <footer className="Cart__footer">
+          <CartFooter>
             <div className="Cart-info clearfix">
               <div className="Cart-info__total Cart-info__small">Subtotal</div>
               <div className="Cart-info__pricing">
@@ -66,10 +66,10 @@ class Cart extends Component {
                 <span className="pricing">$ {this.props.checkout.totalPrice}</span>
               </div>
             </div>
-          </footer>
-          <Checkout>
-            <BuyButton onClick={this.openCheckout}>Check Out</BuyButton>
-          </Checkout>
+            <Checkout>
+              <BuyButton onClick={this.openCheckout}>Check Out</BuyButton>
+            </Checkout>
+          </CartFooter>
         </CartWrapper>
       </Fragment>
     )
@@ -86,20 +86,28 @@ export default connect(
 const CartWrapper = styled.div`
   ${fancyScroll};
   ${shadow};
+  ${transTransform};
   overflow-y: scroll;
   height: 100vh;
+  width: 100vw;
   position: fixed;
   right: 0;
   top: 0;
-  width: ${widths.cart};
-  background-color: ${colors.yellow};
+  background-color: ${colors.green};
   padding-top: ${heights.header};
   z-index: 9000;
-  transform: translateX(${widths.cart});
-  ${transTransform};
+  transform: translateX(100vw);
   &.cart-open {
     transform: translateX(0);
   }
+  ${media.desktopNav`
+    width: 75vw;
+    transform: translateX(75vw);
+  `}
+  ${media.big`
+    width: ${widths.cart};
+    transform: translateX(${widths.cart});
+  `}
 `
 
 const CloseWrapper = styled.div`
@@ -109,11 +117,11 @@ const CloseWrapper = styled.div`
 
 const CartButtonWrapper = styled.div`
   ${flexCenteredAll};
-  position: fixed;
-  bottom: 1.5rem;
-  right: 1.5rem;
-  z-index: 9000;
   ${transTransform};
+  z-index: 9000;
+  position: fixed;
+  bottom: 3.75rem;
+  right: 2rem;
   &.cart-open {
     transform: translateY(-10rem);
   }
@@ -130,7 +138,7 @@ const CartHeader = styled.header`
   justify-content: space-between;
   padding-left: ${spacing.double_pad};
   padding-right: 1rem;
-  width: ${widths.cart};
+  width: 100%;
   height: ${heights.header};
   position: absolute;
   top: 0;
@@ -143,5 +151,11 @@ const CartHeader = styled.header`
 
 const CartItems = styled.ul`
   ${flexColumn};
+  width: 100%;
+`
+
+const CartFooter = styled.footer`
+  ${flexRow};
+  ${mainPadding};
   width: 100%;
 `
