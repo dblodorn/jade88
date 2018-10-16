@@ -1,52 +1,51 @@
 import React, {Component} from 'react'
 import styled from 'styled-components'
-import { flexRowCenteredVert, flexColumn } from './../styles/mixins'
+import { flexRowCenteredVert, flexColumn, media } from './../styles/mixins'
 import { H4, H6, StyledMarkup, BuyButton } from './../styles/components'
-import { widths, colors, fonts, spacing } from './../styles/theme.json'
+import { colors, spacing } from './../styles/theme.json'
 import VariantSelector from './VariantSelector'
 import { FitImage } from './../components'
 
 class Product extends Component {
   constructor(props) {
     super(props);
-    let defaultOptionValues = {};
+    let defaultOptionValues = {}
     this.props.product.options.forEach((selector) => {
-      defaultOptionValues[selector.name] = selector.values[0].value;
-    });
-    this.state = { selectedOptions: defaultOptionValues };
-    this.handleOptionChange = this.handleOptionChange.bind(this);
-    this.handleQuantityChange = this.handleQuantityChange.bind(this);
-    this.findImage = this.findImage.bind(this);
-    console.log(this.props)
+      defaultOptionValues[selector.name] = selector.values[0].value
+    })
+    this.state = { selectedOptions: defaultOptionValues }
+    this.handleOptionChange = this.handleOptionChange.bind(this)
+    this.handleQuantityChange = this.handleQuantityChange.bind(this)
+    this.findImage = this.findImage.bind(this)
   }
 
   findImage(images, variantId) {
-    const primary = images[0];
+    const primary = images[0]
 
     const image = images.filter(function (image) {
-      return image.variant_ids.includes(variantId);
-    })[0];
+      return image.variant_ids.includes(variantId)
+    })[0]
 
-    return (image || primary).src;
+    return (image || primary).src
   }
 
   handleOptionChange(event) {
     const target = event.target
-    let selectedOptions = this.state.selectedOptions;
-    selectedOptions[target.name] = target.value;
+    let selectedOptions = this.state.selectedOptions
+    selectedOptions[target.name] = target.value
 
     const selectedVariant = this.props.client.product.helpers.variantForOptions(this.props.product, selectedOptions)
 
     this.setState({
       selectedVariant: selectedVariant,
       selectedVariantImage: selectedVariant.attrs.image
-    });
+    })
   }
 
   handleQuantityChange(event) {
     this.setState({
       selectedVariantQuantity: event.target.value
-    });
+    })
   }
 
   render() {
@@ -60,8 +59,8 @@ class Product extends Component {
           key={option.id.toString()}
           option={option}
         />
-      );
-    });
+      )
+    })
     return (
       <ProductCard className={this.props.product.handle}>
         <CardInner>
@@ -97,6 +96,7 @@ const ProductCard = styled.li`
   height: 100vh;
   margin: auto;
   position: relative;
+  padding: 1.5rem;
   &:nth-child(odd) {
     .product-image {
       right: 0;
@@ -145,20 +145,29 @@ const CardInner = styled.div`
 `
 
 const ProductImage = styled.div`
-  width: 35%;
-  height: 80%;
+  width: 100%;
+  height: 95%;
   position: absolute;
   top: 0;
   bottom: 0;
   margin: auto;
+  ${media.desktopNav`
+    width: 35%;
+    height: 80%;
+  `}
 `
 
 const ProductInfo = styled.div`
   ${flexRowCenteredVert};
-  width: 75%;
+  width: 100%;
   height: 100%;
   position: absolute;
   top: 0;
+  padding-top: 25%;
+  ${media.desktopNav`
+    width: 75%;
+    height: 80%;
+  `}
 `
 
 const Info = styled.div`

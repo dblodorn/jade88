@@ -1,4 +1,3 @@
-import fetchApiData from './fetchApiData'
 import { 
   setResizeState,
   setMenuState,
@@ -25,7 +24,6 @@ import {
 } from './a_cart'
 
 export {
-  fetchApiData,
   setResizeState,
   setMenuState,
   setHeaderState,

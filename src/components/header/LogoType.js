@@ -1,7 +1,6 @@
 import React from 'react'
-import styled, { ThemeProvider } from 'styled-components'
-import { themeA, themes } from './../../styles/theme'
-import { StyledLink } from './../../styles/components'
+import styled from 'styled-components'
+import { media } from './../../styles/mixins'
 
 export default (props) =>
   <LogoType to={'/'} className={props.orientation}>      
@@ -33,7 +32,7 @@ export default (props) =>
 const LogoType = styled.div`
   object-fit: contain;
   display: block;
-  width: 50%;
+  width: 70%;
   padding: .5rem;
   svg {
     width: 100%;
@@ -42,4 +41,7 @@ const LogoType = styled.div`
       fill: ${props => props.theme.logo_color}!important;
     }
   }
+  ${media.desktopNav`
+    width: 50%;
+  `}
 `

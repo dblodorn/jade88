@@ -1,31 +1,29 @@
 import React, {Component} from 'react';
 import styled from 'styled-components'
 import { staggeredColor, flexRow, mainPadding, mediumType, flexRowCenteredAll, bigType } from './../styles/mixins'
-import { H4, H6, StyledMarkup, BuyButton } from './../styles/components'
-import { heights, colors, fonts, spacing } from './../styles/theme.json'
+import { BuyButton } from './../styles/components'
+import { heights, colors, spacing } from './../styles/theme.json'
 import { toLowerCaseDash } from './../scripts'
 import { FitImage } from './../components'
 
 class LineItem extends Component {
   constructor(props) {
-    super(props);
-
-    this.decrementQuantity = this.decrementQuantity.bind(this);
-    this.incrementQuantity = this.incrementQuantity.bind(this);
+    super(props)
+    this.decrementQuantity = this.decrementQuantity.bind(this)
+    this.incrementQuantity = this.incrementQuantity.bind(this)
   }
 
   decrementQuantity(lineItemId) {
     const updatedQuantity = this.props.line_item.quantity - 1
-    this.props.updateQuantityInCart(lineItemId, updatedQuantity);
+    this.props.updateQuantityInCart(lineItemId, updatedQuantity)
   }
 
   incrementQuantity(lineItemId) {
     const updatedQuantity = this.props.line_item.quantity + 1
-    this.props.updateQuantityInCart(lineItemId, updatedQuantity);
+    this.props.updateQuantityInCart(lineItemId, updatedQuantity)
   }
 
   render() {
-    console.log(this.props.line_item)
     return (
       <Item>
         <LineItemImage className={toLowerCaseDash(this.props.line_item.title)}>
@@ -55,7 +53,7 @@ class LineItem extends Component {
           </Price>
         </LineItemContent>
       </Item>
-    );
+    )
   }
 }
 

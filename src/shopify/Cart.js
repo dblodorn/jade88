@@ -1,11 +1,10 @@
 import React, { Component, Fragment } from 'react'
 import { connect } from 'react-redux'
 import styled from 'styled-components'
-import { Transition } from 'react-spring'
 import { mainPadding, flexCenteredAll, fancyScroll, flexRow, flexRowCenteredVert, shadow, transTransform, flexColumn, media  } from './../styles/mixins'
 import { H2, BuyButton } from './../styles/components'
 import { Close } from './../components'
-import { widths, heights, shared, colors, spacing } from './../styles/theme.json'
+import { widths, heights, colors, spacing } from './../styles/theme.json'
 import LineItem from './LineItem'
 
 class Cart extends Component {
@@ -32,11 +31,9 @@ class Cart extends Component {
 
     return (
       <Fragment>
-        {!this.props.cart.isCartOpen &&
-          <CartButtonWrapper className={this.props.cart.isCartOpen && 'cart-open'}>
-            <BuyButton bgColor={colors.magenta} startAngle={`-20deg`} endAngle={`20deg`} className="App__view-cart" onClick={this.props.handleCartOpen}>Cart</BuyButton>
-          </CartButtonWrapper>
-        }
+        <CartButtonWrapper className={this.props.cart.isCartOpen && 'cart-open'}>
+          <BuyButton bgColor={colors.magenta} startAngle={`-20deg`} endAngle={`20deg`} className="App__view-cart" onClick={this.props.handleCartOpen}>Cart</BuyButton>
+        </CartButtonWrapper>
         <CartWrapper className={(this.props.cart.isCartOpen) && 'cart-open'}>
           <CartHeader>
             <H2>CART</H2>
@@ -120,11 +117,19 @@ const CartButtonWrapper = styled.div`
   ${transTransform};
   z-index: 9000;
   position: fixed;
-  bottom: 3.75rem;
-  right: 2rem;
+  top: 1.5rem;
+  left: 1.5rem;
   &.cart-open {
-    transform: translateY(-10rem);
+    transform: translateY(-20rem) translateX(-20rem);
+    pointer-events: none;
   }
+  ${media.desktopNav`
+    bottom: 3.75rem;
+    right: 2rem;
+    &.cart-open {
+      transform: translateY(30rem);
+    }
+  `}
 `
 
 const Checkout = styled.div`

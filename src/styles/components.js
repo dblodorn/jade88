@@ -262,12 +262,12 @@ const CloseButton = styled.button`
 const BuyButton = styled.button`
   ${_.buttonInit};
   ${_.shadow};
-  width: ${props => props.size || `11rem`};
-  height: ${props => props.size || `11rem`};
+  width: ${props => props.sizeMobie || `7rem`};
+  height: ${props => props.sizeMobie || `7rem`};
   background-color: ${props => props.bgColor || colors.blue};
   font-family: ${fonts.sans};
   text-transform: uppercase;
-  font-size: 3.5rem;
+  font-size: 2rem;
   line-height: .7;
   color: ${colors.white};
   transition: transform 250ms ease-in-out;
@@ -277,6 +277,11 @@ const BuyButton = styled.button`
   &:hover {
     transform: rotate(${props => props.endAngle || `-25deg`});
   }
+  ${_.media.desktopNav`
+    font-size: 3.25rem;
+    width: ${props => props.size || `11rem`};
+    height: ${props => props.size || `11rem`};
+  `}
 `
 
 export {

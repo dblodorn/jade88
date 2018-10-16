@@ -1,5 +1,4 @@
 import { combineReducers } from 'redux'
-import { apiData, taxonomyData, themeData } from './apiData'
 import { 
   resizeState, 
   menuState, 
@@ -20,9 +19,6 @@ import cart from './r_cart'
 
 const rootReducer = combineReducers({
   cart: cart,
-  api_data: apiData,
-  themes: themeData,
-  taxonomy_data: taxonomyData,
   resize_state: resizeState,
   fonts_loaded: fontState,
   touch_state: touchState,

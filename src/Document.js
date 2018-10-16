@@ -6,7 +6,7 @@ import { handleCartClose, handleCartOpen, updateQuantityInCart, removeLineItemIn
 import { animationFadeIn, flexColumn, media } from './styles/mixins'
 import { colors, fonts, heights, widths } from './styles/theme.json'
 import { routeName } from './scripts'
-import { Footer, Header } from './components'
+import { HeaderSidebar } from './components'
 import { LoadingPage } from './views'
 import Cart from './shopify/Cart'
 import { shop } from './config.json'
@@ -25,7 +25,7 @@ const Document = (props) => {
             removeLineItemInCart={removeLineItemInCart}
           />
         }
-        <Header/>
+        <HeaderSidebar header_state={props.header_state}/>
         <Main id={routeName(props.router.location.pathname).routeClass} className={(props.cart.isCartOpen) ? `cart-open ${props.header_style}` : props.header_style}>
           {props.children}
         </Main>
@@ -39,7 +39,9 @@ const Document = (props) => {
 export default connect(
   state => ({
     router: state.router,
-    cart: state.cart
+    cart: state.cart,
+    header_state: state.header_state,
+    style: state.header_style
   })
 )(Document)
 
@@ -52,18 +54,10 @@ const Main = styled.main`
   min-height: calc(100vh - ${heights.footer});
   will-change: transform;
   transition: transform 400ms ease-in-out;
-  &.sidebar {
-    ${media.desktopNav`
-      padding-left: ${widths.sidebar_desktop};
-      padding-bottom: ${heights.footer};
-    `}
-  }
-  &.top-horizontal {
-    ${media.desktopNav`
-      padding-top: ${heights.header};
-      padding-bottom: ${heights.footer};
-    `}
-  }
+  padding-right: ${widths.sidebar_desktop};
+  ${media.desktopNav`
+    padding-right: 0;
+  `}
   &.cart-open {
     transform: translateX(-35vw);
   }

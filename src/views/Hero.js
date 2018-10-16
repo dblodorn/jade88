@@ -1,7 +1,7 @@
 import React from 'react'
 import { Carousel, LogoType } from './../components'
 import styled from 'styled-components'
-import { flexCenteredAll } from './../styles/mixins'
+import { flexCenteredAll, media } from './../styles/mixins'
 
 const slides = [
   {
@@ -90,7 +90,7 @@ export default (props) =>
 // STYLES
 const CarouselWrapper = styled.section`
   display: block;
-  width: 100vw;
+  width: 100%;
   height: 100vh;
   position: relative;
   max-height: 100vh;
@@ -98,12 +98,19 @@ const CarouselWrapper = styled.section`
 `
 
 const LogoWrapper = styled.div`
-  ${flexCenteredAll};
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
   width: 100%;
   height: 100%;
   position: absolute;
   top: 0;
   left: 0;
   z-index: 900;
-  opacity: .8;
+  opacity: 1;
+  padding: 4rem 1rem 12rem;
+  ${media.desktopNav`
+    width: 100%;
+    opacity: .8;
+  `}
 `
