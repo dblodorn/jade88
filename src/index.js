@@ -8,7 +8,7 @@ import _ from 'lodash/wrapperLodash'
 import { setResizeState, hasTouch, fontsLoaded } from './state/actions'
 import App from './App'
 import config, { shopify } from './config.json'
-import { history, store } from './state/store'
+import { store } from './state/store'
 import Client from 'shopify-buy';
 
 const client = Client.buildClient({
@@ -60,7 +60,7 @@ WebFont.load({
 
 ReactDOM.render(
   <Provider store={store}>
-    <App history={history} />
+    <App/>
   </Provider>,
   document.getElementById('root')
 );

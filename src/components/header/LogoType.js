@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import { media } from './../../styles/mixins'
 
 export default (props) =>
-  <LogoType to={'/'} className={props.orientation}>      
+  <LogoType className={props.orientation}>      
     <svg width="881px" height="355px" viewBox="0 0 881 355" version="1.1" xmlns="http://www.w3.org/2000/svg">
       <defs>
         <polygon id="path-1" points="0 0.151690878 72.2265938 0.151690878 72.2265938 255.969267 0 255.969267"></polygon>

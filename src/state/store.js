@@ -15,10 +15,9 @@ if (process.env.NODE_ENV === 'development') {
 const history = createBrowserHistory()
 
 const store = createStore(
-  connectRouter(history)(rootReducer),
+  rootReducer,
   composeEnhancer(
     applyMiddleware(
-      routerMiddleware(history),
       thunk
     ),
   ),

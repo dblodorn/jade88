@@ -1,13 +1,12 @@
 import React, { Fragment } from 'react'
 import { connect } from 'react-redux'
-import { Transition } from 'react-spring'
 import styled, { injectGlobal } from 'styled-components'
 import { handleCartClose, handleCartOpen, updateQuantityInCart, removeLineItemInCart } from './state/actions'
 import { animationFadeIn, flexColumn, media } from './styles/mixins'
 import { colors, fonts, heights, widths } from './styles/theme.json'
 import { routeName } from './scripts'
 import { HeaderSidebar } from './components'
-import { LoadingPage } from './views'
+import { LoadingPage, Shop } from './views'
 import Cart from './shopify/Cart'
 import { shop } from './config.json'
 
@@ -26,8 +25,8 @@ const Document = (props) => {
           />
         }
         <HeaderSidebar header_state={props.header_state}/>
-        <Main id={routeName(props.router.location.pathname).routeClass} className={(props.cart.isCartOpen) ? `cart-open ${props.header_style}` : props.header_style}>
-          {props.children}
+        <Main className={(props.cart.isCartOpen) ? `cart-open ${props.header_style}` : props.header_style}>
+          <Shop/>
         </Main>
       </Fragment>
     )

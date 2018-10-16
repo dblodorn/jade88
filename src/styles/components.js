@@ -1,4 +1,3 @@
-import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 import { heights, spacing, shared, colors, widths, fonts } from './theme.json'
 import * as _ from './mixins'
@@ -97,10 +96,6 @@ const StyledButton = styled.button`
   ${_.buttonStyle};
 `
 
-const ButtonLink = styled(Link)`
-  ${_.buttonStyle};
-`
-
 const StyledMarkup = styled.div`
   margin-bottom: ${spacing.single_pad};
   &.pad-top {
@@ -157,11 +152,6 @@ const StyledMarkup = styled.div`
 `
 
 // UI
-const StyledLink = styled(Link)`
-  ${_.defaultLink};
-  color: ${props => props.theme.display_font_color}!important;
-`
-
 const NavItem = styled.li`
   padding-bottom: ${spacing.double_pad};
   &:last-child {
@@ -298,11 +288,9 @@ export {
   SmallP,
   StyledMarkup,
   SocialLink,
-  StyledLink,
   LogoWrapperFixedTopRight,
   FullPageBgWrapper,
   NavItem,
-  ButtonLink,
   StyledButton,
   GridWrapper,
   ProportionWrapper,
