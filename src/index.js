@@ -5,7 +5,7 @@ import WebFont from 'webfontloader'
 import throttle from 'lodash/throttle'
 import mixin from 'lodash/mixin'
 import _ from 'lodash/wrapperLodash'
-import { fetchApiData, setResizeState, hasTouch, fontsLoaded } from './state/actions'
+import { setResizeState, hasTouch, fontsLoaded } from './state/actions'
 import App from './App'
 import config, { shopify } from './config.json'
 import { history, store } from './state/store'
@@ -32,9 +32,6 @@ client.shop.fetchInfo().then((res) => {
 mixin(_, {
   throttle: throttle
 })
-
-// INITIALIZE STATE
-// store.dispatch(fetchApiData())
 
 const resizeHandler = () => {
   store.dispatch(setResizeState())
