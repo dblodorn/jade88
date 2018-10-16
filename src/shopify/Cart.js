@@ -128,10 +128,10 @@ const CartButtonWrapper = styled.div`
   ${media.desktopNav`
     top: auto;
     left: auto;
-    bottom: 3.75rem;
-    right: 2rem;
+    bottom: 3.5rem;
+    right: 4rem;
     &.cart-open {
-      transform: translateY(30rem);
+      transform: translateY(30rem) translateX(30rem);
     }
   `}
 `

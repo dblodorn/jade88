@@ -9,6 +9,7 @@ import LogoType from './header/LogoType'
 
 // Plugin Compnents - most have external dependencies
 //import MailScrape from './plugins/MailScrape'
+import Ticker from './Ticker'
 import Carousel from './plugins/Carousel'
 
 export {
@@ -17,6 +18,7 @@ export {
   Spinner,
   Close,
   LogoType,
+  Ticker,
   // MailScrape,
   Carousel
 }
