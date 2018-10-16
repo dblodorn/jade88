@@ -1,8 +1,8 @@
 import React, { Component, Fragment } from 'react'
 import { connect } from 'react-redux'
 import styled from 'styled-components'
-import { mainPadding, flexCenteredAll, fancyScroll, flexRow, flexRowCenteredVert, shadow, transTransform, flexColumn, media  } from './../styles/mixins'
-import { H2, BuyButton } from './../styles/components'
+import { mainPadding, flexCenteredAll, fancyScroll, flexRow, flexRowCenteredVert, shadow, transTransform, flexColumn, media, mediumType  } from './../styles/mixins'
+import { H2, BuyButton, LozengeButton } from './../styles/components'
 import { Close } from './../components'
 import { widths, heights, colors, spacing } from './../styles/theme.json'
 import LineItem from './LineItem'
@@ -45,26 +45,28 @@ class Cart extends Component {
             {line_items}
           </CartItems>
           <CartFooter>
-            <div className="Cart-info clearfix">
-              <div className="Cart-info__total Cart-info__small">Subtotal</div>
-              <div className="Cart-info__pricing">
-                <span className="pricing">$ {this.props.checkout.subtotalPrice}</span>
-              </div>
-            </div>
-            <div className="Cart-info clearfix">
-              <div className="Cart-info__total Cart-info__small">Taxes</div>
-              <div className="Cart-info__pricing">
-                <span className="pricing">$ {this.props.checkout.totalTax}</span>
-              </div>
-            </div>
-            <div className="Cart-info clearfix">
-              <div className="Cart-info__total Cart-info__small">Total</div>
-              <div className="Cart-info__pricing">
-                <span className="pricing">$ {this.props.checkout.totalPrice}</span>
-              </div>
-            </div>
+            <CartInfoGrid>
+              <InfoItem>
+                <div className="Cart-info__total Cart-info__small">Subtotal</div>
+                <div className="Cart-info__pricing">
+                  <span className="pricing">$ {this.props.checkout.subtotalPrice}</span>
+                </div>
+              </InfoItem>
+              <InfoItem>
+                <div className="Cart-info__total Cart-info__small">Taxes</div>
+                <div className="Cart-info__pricing">
+                  <span className="pricing">$ {this.props.checkout.totalTax}</span>
+                </div>
+              </InfoItem>
+              <InfoItem>
+                <div className="Cart-info__total Cart-info__small">Total</div>
+                <div className="Cart-info__pricing">
+                  <span className="pricing">$ {this.props.checkout.totalPrice}</span>
+                </div>
+              </InfoItem>
+            </CartInfoGrid>
             <Checkout>
-              <BuyButton onClick={this.openCheckout}>Check Out</BuyButton>
+              <LozengeButton onClick={this.openCheckout}><span>Check Out</span></LozengeButton>
             </Checkout>
           </CartFooter>
         </CartWrapper>
@@ -124,6 +126,8 @@ const CartButtonWrapper = styled.div`
     pointer-events: none;
   }
   ${media.desktopNav`
+    top: auto;
+    left: auto;
     bottom: 3.75rem;
     right: 2rem;
     &.cart-open {
@@ -133,9 +137,8 @@ const CartButtonWrapper = styled.div`
 `
 
 const Checkout = styled.div`
-  position: absolute;
-  bottom: 2rem;
-  right: 2rem;
+  ${flexRowCenteredVert};
+  position: relative;
 `
 
 const CartHeader = styled.header`
@@ -153,14 +156,25 @@ const CartHeader = styled.header`
     color: ${colors.white};
   }
 `
-
-const CartItems = styled.ul`
-  ${flexColumn};
-  width: 100%;
-`
-
 const CartFooter = styled.footer`
   ${flexRow};
   ${mainPadding};
+  justify-content: space-between;
+  width: 100%;
+`
+
+const CartInfoGrid = styled.div`
+  ${flexRow};
+`
+
+const InfoItem = styled.div`
+  padding-right: ${spacing.double_pad};
+  span {
+    ${mediumType};
+  }
+`
+
+const CartItems = styled.ul`
+  ${flexColumn};
   width: 100%;
 `

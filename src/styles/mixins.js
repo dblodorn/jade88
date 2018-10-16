@@ -217,13 +217,14 @@ const flexRowSpaceBetween = css`
 
 const buttonStyle = css`
   ${buttonInit};
-  ${microType};
+  ${smallType};
   ${flexCenteredAll};
+  ${shadow};
   text-transform: uppercase;
-  height: 3rem;
+  height: 4rem;
   background-color: ${Color(colors.button_color).hsl().string()};
   color: ${colors.button_typs_color};
-  border-radius: 1.5rem;
+  border-radius: 2rem;
   will-change: background-color;
   transition: background-color 250ms ease;
   text-decoration: none;
@@ -232,9 +233,6 @@ const buttonStyle = css`
   font-weight: 600;
   flex-grow: 0;
   flex-shrink: 0;
-  span {
-    padding-top: .25rem;
-  }
   &:hover {
     background-color: ${Color(colors.button_color).darken(.25).hsl().string()};
   }
@@ -245,10 +243,7 @@ const buttonStyle = css`
     background-color: ${Color(colors.button_color).darken(.125).hsl().string()}; 
     width: auto;
     min-width: 10rem;
-    padding: 0 1.5rem;
-    span {
-      padding-top: 2px;
-    }
+    padding: 0;
     &.active {
       background-color: ${Color(colors.button_color).darken(1.5)};
     }

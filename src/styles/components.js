@@ -249,6 +249,10 @@ const CloseButton = styled.button`
   }
 `
 
+const LozengeButton = styled.button`
+  ${_.buttonStyle};
+`
+
 const BuyButton = styled.button`
   ${_.buttonInit};
   ${_.shadow};
@@ -297,5 +301,6 @@ export {
   ModalWrapper,
   ModalContentWrapper,
   CloseButton,
-  BuyButton
+  BuyButton,
+  LozengeButton
 }
