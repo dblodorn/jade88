@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
-import { heights, spacing, shared, colors, widths } from './theme.json'
+import { heights, spacing, shared, colors, widths, fonts } from './theme.json'
 import * as _ from './mixins'
 
 // DOM NODES
@@ -47,40 +47,40 @@ const H1 = styled.h1`
   ${_.bigType};
   padding-bottom: ${spacing.single_pad};
   color: ${props => props.theme.display_font_color}!important;
-  font-family: ${props => props.theme.display_font};
+  font-family: ${fonts.display_font_a};
   text-transform: ${props => props.theme.display_case};
 `
 
 const H2 = styled.h2`
   ${_.mediumType};
   color: ${props => props.theme.display_font_color}!important;
-  font-family: ${props => props.theme.display_font};
+  font-family: ${fonts.display_font_a};
 `
 
 const H3 = styled.h3`
   ${_.bodyType};
   padding-bottom: ${spacing.small_pad};
   color: ${props => props.theme.display_font_color}!important;
-  font-family: ${props => props.theme.display_font};
+  font-family: ${fonts.display_font_a};
 `
 
 const H4 = styled.h4`
-  ${_.bodyType};
+  ${_.mediumType};
   padding-bottom: ${spacing.small_pad};
   color: ${props => props.theme.display_font_color}!important;
-  font-family: ${props => props.theme.display_font};
+  font-family: ${fonts.display_font_a};
 `
 
 const H5 = styled.h5`
-  ${_.bodyType};
+  ${_.mediumType};
   padding-bottom: ${spacing.small_pad};
-  font-family: ${props => props.theme.display_font};
+  font-family: ${fonts.display_font_a};
 `
 
 const H6 = styled.h6`
   ${_.bodyType};
   padding-bottom: ${spacing.small_pad};
-  font-family: ${props => props.theme.display_font};
+  font-family: ${fonts.display_font_a};
 `
 
 const P = styled.p`
@@ -102,53 +102,57 @@ const ButtonLink = styled(Link)`
 `
 
 const StyledMarkup = styled.div`
+  margin-bottom: ${spacing.single_pad};
   &.pad-top {
     padding-top: ${spacing.double_pad};
   }
   h1 {
     ${_.bigType};
-    color: ${props => props.theme.display_font_color}!important;
-    font-family: ${props => props.theme.display_font}!important;
+    color: ${props => props.theme.display_font_color};
+    font-family: ${fonts.display_font_a};
   }
   h2 {
     ${_.mediumType};
-    color: ${props => props.theme.display_font_color}!important;
-    font-family: ${props => props.theme.display_font}!important;
+    color: ${props => props.theme.display_font_color};
+    font-family: ${fonts.display_font_a};
   }
   h3 {
-    ${_.bodyType};
-    color: ${props => props.theme.body_copy_color}!important;
-    font-family: ${props => props.theme.display_font}!important;
+    ${_.mediumType};
+    color: ${props => props.theme.body_copy_color};
+    font-family: ${fonts.display_font_a};
   }
   h4 {
-    ${_.bodyType};
-    color: ${props => props.theme.body_copy_color}!important;
-    font-family: ${props => props.theme.body_copy_font}!important;
+    ${_.mediumType};
+    color: ${props => props.theme.body_copy_color};
+    font-family: ${props => props.theme.body_copy_font};
   }
   h5 {
-    ${_.bodyType};
-    color: ${props => props.theme.body_copy_color}!important;
-    font-family: ${props => props.theme.body_copy_font}!important;
+    ${_.mediumType};
+    color: ${props => props.theme.body_copy_color};
+    font-family: ${props => props.theme.body_copy_font};
   }
   h6 {
     ${_.bodyType};
-    color: ${props => props.theme.body_copy_color}!important;
-    font-family: ${props => props.theme.body_copy_font}!important;
+    color: ${props => props.theme.body_copy_color};
+    font-family: ${props => props.theme.body_copy_font};
   }
   p {
     ${_.bodyType};
-    color: ${props => props.theme.body_copy_color}!important;
-    font-family: ${props => props.theme.body_copy_font}!important;
+    color: ${props => props.theme.body_copy_color};
+    font-family: ${props => props.theme.body_copy_font};
     margin-bottom: ${spacing.single_pad};
     max-width: ${widths.max_medium};
     &:last-child {
       margin-bottom: 0;
     }
   }
+  b {
+    font-family: ${fonts.display_font_a}!important;
+  }
   a {
     ${_.defaultLink};
-    color: ${props => props.theme.display_font_color}!important;
-    font-family: ${props => props.theme.body_copy_font}!important;
+    color: ${props => props.theme.display_font_color};
+    font-family: ${props => props.theme.body_copy_font};
   }
 `
 
@@ -246,15 +250,32 @@ const CloseButton = styled.button`
   ${_.buttonInit};
   width: ${props => props.size};
   height: ${props => props.size};
-  position: absolute;
-  top: 1.5rem;
-  right: 1.5rem;
   padding: 0;
   z-index: 11000;
   cursor: pointer;
   svg {
     width: 100%;
     height: 100%;
+  }
+`
+
+const BuyButton = styled.button`
+  ${_.buttonInit};
+  ${_.shadow};
+  width: 11rem;
+  height: 11rem;
+  background-color: ${props => props.bgColor || colors.blue};
+  font-family: ${fonts.sans};
+  text-transform: uppercase;
+  font-size: 3.5rem;
+  line-height: .7;
+  color: ${colors.white};
+  transition: transform 250ms ease-in-out;
+  will-change: transition;
+  border-radius: 50%;
+  transform: rotate(${props => props.startAngle || `25deg`});
+  &:hover {
+    transform: rotate(${props => props.endAngle || `-25deg`});
   }
 `
 
@@ -282,5 +303,6 @@ export {
   ProportionWrapper,
   ModalWrapper,
   ModalContentWrapper,
-  CloseButton
+  CloseButton,
+  BuyButton
 }

@@ -7,13 +7,13 @@ import mixin from 'lodash/mixin'
 import _ from 'lodash/wrapperLodash'
 import { fetchApiData, setResizeState, hasTouch, fontsLoaded } from './state/actions'
 import App from './App'
-import config from './config.json'
+import config, { shopify } from './config.json'
 import { history, store } from './state/store'
 import Client from 'shopify-buy';
 
 const client = Client.buildClient({
-  storefrontAccessToken: 'd3dc784774e78bb247646c02ff6222a4',
-  domain: 'dmbk.myshopify.com'
+  storefrontAccessToken: shopify.token,
+  domain: shopify.domain
 });
 
 store.dispatch({type: 'CLIENT_CREATED', payload: client});

@@ -7,7 +7,7 @@ import Waypoint from 'react-waypoint'
 import { setFooterState } from './../../state/actions'
 import CarouselSlide from './CarouselSlide'
 import { spacing, heights } from './../../styles/theme.json'
-import { buttonInit, absoluteTopFull, absoluteCentered } from './../../styles/mixins'
+import { buttonInit, absoluteTopFull, absoluteCentered, staggeredColor } from './../../styles/mixins'
 import { PrevButton, NextButton } from './../utils/PrevNextButton'
 
 class Carousel extends Component {
@@ -172,6 +172,12 @@ const buttonWrap = css`
 const HeroSlide = styled.div`
   width: 100%;
   height: 100%;
+  display: flex;
+  flex-direction: row-reverse;
+  &:nth-child(odd) {
+    flex-direction: row;
+  }
+  ${staggeredColor};
   &.nav {
     padding: 0 5.25rem;
   }

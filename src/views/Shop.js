@@ -6,14 +6,14 @@ import styled, { ThemeProvider } from 'styled-components'
 import { themeA, themes } from './../styles/theme'
 import { Products } from './../shopify'
 import { Section } from './../styles/components'
-import { flexCenteredAll, buttonInit } from './../styles/mixins'
-import { colors } from './../styles/theme.json'
+import Hero from './Hero'
 
 class Shop extends Component {
   render() {
     const state = store.getState()
     return (
-      <ThemeProvider theme={themes[this.props.theme] || themeA}>
+      <Fragment>
+        <Hero/>
         <ShopSection>
           <Products
             products={state.cart.products}
@@ -21,15 +21,13 @@ class Shop extends Component {
             addVariantToCart={addVariantToCart}
           />
         </ShopSection>
-      </ThemeProvider>
+      </Fragment>
     )
   }  
 }
 
 export default connect((state) => state)(Shop);
 
-
 const ShopSection = styled(Section)`
   width: 100%;
-  background-color: ${colors.white};
 `

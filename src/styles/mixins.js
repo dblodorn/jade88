@@ -164,7 +164,12 @@ const transitionAll = (time) => {
 }
 
 const shadow = css`
-  box-shadow: 1px 1px 5px 0px rgba(0,0,0,0.33);
+  box-shadow: 1px 1px 35px 0px rgba(0,0,0,0.33);
+`
+
+const transTransform = css`
+  will-change: transform;
+  transition: transform 400ms ease-in-out;
 `
 
 // Flex Layout
@@ -482,6 +487,21 @@ const halfFixed = css`
   }
 `
 
+const staggeredColor = css`
+  &:nth-child(odd) {
+    background-color: #F3E500;
+  }
+  &:nth-child(even) {
+    background-color: #EA0029;
+  }
+  &:first-child {
+    background-color: #008FBE;
+  }
+  &:first-child {
+    background-color: #008FBE;
+  }
+`
+
 export {
   media,
   maxWidth,
@@ -521,5 +541,7 @@ export {
   textShadow,
   fixedHero,
   halfFixed,
-  fixedWindow
+  fixedWindow,
+  transTransform,
+  staggeredColor
 }

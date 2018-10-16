@@ -10,9 +10,7 @@ import { heights, spacing, colors } from './../../styles/theme.json'
 
 const MenuWrapper = (props) =>
   <InnerHeader style={props.style} className="nav-wrapper__content">
-    <Menu location={0}>
-      <MenuLink page={'Home'} path={''}/>
-    </Menu>
+    
   </InnerHeader>
 
 const HeaderMobile = (props) => {

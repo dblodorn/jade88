@@ -1,10 +1,10 @@
 {
-  "name": "DMBK Archive",
-  "short_name": "DMBK",
+  "name": "Jade88",
+  "short_name": "Jade88",
   "start_url": "index.html",
   "display": "standalone",
-  "theme_color": "#202D85",
-  "background_color": "#FFCFC4",
+  "theme_color": "#00FF00",
+  "background_color": "#008FBE",
   "orientation": "portrait",
   "icons": [
     {

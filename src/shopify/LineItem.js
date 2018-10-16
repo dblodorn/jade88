@@ -1,4 +1,9 @@
 import React, {Component} from 'react';
+import styled from 'styled-components'
+import { staggeredColor, flexRow, mainPadding } from './../styles/mixins'
+import { H4, H6, StyledMarkup, BuyButton } from './../styles/components'
+import { widths, colors, fonts, spacing } from './../styles/theme.json'
+import { FitImage } from './../components'
 
 class LineItem extends Component {
   constructor(props) {
@@ -20,10 +25,13 @@ class LineItem extends Component {
 
   render() {
     return (
-      <li className="Line-item">
-        <div className="Line-item__img">
-          {this.props.line_item.variant.image ? <img src={this.props.line_item.variant.image.src} alt={`${this.props.line_item.title} product shot`}/> : null}
-        </div>
+      <Item>
+        <LineItemImage>
+          {this.props.line_item.variant.image
+            ? <FitImage src={this.props.line_item.variant.image.src} fit={'contain'}/> 
+            : null
+          }
+        </LineItemImage>
         <div className="Line-item__content">
           <div className="Line-item__content-row">
             <div className="Line-item__variant-title">
@@ -45,9 +53,26 @@ class LineItem extends Component {
             <button className="Line-item__remove" onClick={()=> this.props.removeLineItemInCart(this.props.line_item.id)}>×</button>
           </div>
         </div>
-      </li>
+      </Item>
     );
   }
 }
 
 export default LineItem;
+
+// STYLES
+const Item = styled.li`
+  ${flexRow};
+  ${staggeredColor};
+  width: 100%;
+  height: 45vh;
+  position: relative;
+  ${mainPadding};
+`
+
+const LineItemImage = styled.div`
+  width: 50%;
+  height: 100%;
+  padding: ${spacing.double_pad};
+  position: relative;
+`

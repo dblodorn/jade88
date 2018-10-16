@@ -18,7 +18,7 @@ class Products extends Component {
       );
     });
     return (
-      <ProductsWrapper className={'two_col'}>
+      <ProductsWrapper className={'one_col'}>
         {products}
       </ProductsWrapper>
     );
@@ -34,4 +34,13 @@ const ProductsWrapper = styled.ul`
   width: 100%;
   min-height: 100%;
   position: relative;
+  li {
+    position: relative;
+    &:nth-child(odd) {
+      padding-right: 15%;
+    }
+    &:nth-child(even) {
+      padding-left: 15%;
+    }
+  }
 `

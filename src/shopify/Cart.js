@@ -2,8 +2,9 @@ import React, { Component, Fragment } from 'react'
 import { connect } from 'react-redux'
 import styled from 'styled-components'
 import { Transition } from 'react-spring'
-import { mixins, mainPadding, flexCenteredAll, fancyScroll, flexRow, flexRowCenteredVert } from './../styles/mixins'
-import { H2, StyledButton } from './../styles/components'
+import { mainPadding, flexCenteredAll, fancyScroll, flexRow, flexRowCenteredVert, buttonInit, smallType, shadow, transTransform, flexColumn  } from './../styles/mixins'
+import { H2, BuyButton } from './../styles/components'
+import { Close } from './../components'
 import { widths, heights, shared, colors, spacing } from './../styles/theme.json'
 import LineItem from './LineItem'
 
@@ -32,46 +33,44 @@ class Cart extends Component {
     return (
       <Fragment>
         {!this.props.cart.isCartOpen &&
-          <CartButtonWrapper>
-            <StyledButton className="App__view-cart" onClick={this.props.handleCartOpen}>Cart</StyledButton>
+          <CartButtonWrapper className={this.props.cart.isCartOpen && 'cart-open'}>
+            <BuyButton bgColor={colors.magenta} startAngle={`-20deg`} endAngle={`20deg`} className="App__view-cart" onClick={this.props.handleCartOpen}>Cart</BuyButton>
           </CartButtonWrapper>
         }
-        <Transition from={{transform: `translateX(${widths.cart})` }} enter={{transform: `translateX(0})` }} leave={{transform: `translateX(${widths.cart})`}}>
-          {this.props.cart.isCartOpen && (styles => 
-            <CartWrapper style={styles}>
-              <CartHeader>
-                <H2>CART</H2>
-                <StyledButton onClick={this.props.handleCartClose} className="Cart__close">
-                  <span>CLOSE</span>
-                </StyledButton>
-              </CartHeader>
-              <ul className="Cart__line-items">
-                {line_items}
-              </ul>
-              <footer className="Cart__footer">
-                <div className="Cart-info clearfix">
-                  <div className="Cart-info__total Cart-info__small">Subtotal</div>
-                  <div className="Cart-info__pricing">
-                    <span className="pricing">$ {this.props.checkout.subtotalPrice}</span>
-                  </div>
-                </div>
-                <div className="Cart-info clearfix">
-                  <div className="Cart-info__total Cart-info__small">Taxes</div>
-                  <div className="Cart-info__pricing">
-                    <span className="pricing">$ {this.props.checkout.totalTax}</span>
-                  </div>
-                </div>
-                <div className="Cart-info clearfix">
-                  <div className="Cart-info__total Cart-info__small">Total</div>
-                  <div className="Cart-info__pricing">
-                    <span className="pricing">$ {this.props.checkout.totalPrice}</span>
-                  </div>
-                </div>
-                <button className="Cart__checkout button" onClick={this.openCheckout}>Checkout</button>
-              </footer>
-            </CartWrapper>
-          )}
-        </Transition>
+        <CartWrapper className={(this.props.cart.isCartOpen) && 'cart-open'}>
+          <CartHeader>
+            <H2>CART</H2>
+            <CloseWrapper>
+              <Close clickFunction={this.props.handleCartClose} color={colors.white}/>
+            </CloseWrapper>
+          </CartHeader>
+          <CartItems>
+            {line_items}
+          </CartItems>
+          <footer className="Cart__footer">
+            <div className="Cart-info clearfix">
+              <div className="Cart-info__total Cart-info__small">Subtotal</div>
+              <div className="Cart-info__pricing">
+                <span className="pricing">$ {this.props.checkout.subtotalPrice}</span>
+              </div>
+            </div>
+            <div className="Cart-info clearfix">
+              <div className="Cart-info__total Cart-info__small">Taxes</div>
+              <div className="Cart-info__pricing">
+                <span className="pricing">$ {this.props.checkout.totalTax}</span>
+              </div>
+            </div>
+            <div className="Cart-info clearfix">
+              <div className="Cart-info__total Cart-info__small">Total</div>
+              <div className="Cart-info__pricing">
+                <span className="pricing">$ {this.props.checkout.totalPrice}</span>
+              </div>
+            </div>
+          </footer>
+          <Checkout>
+            <BuyButton onClick={this.openCheckout}>Check Out</BuyButton>
+          </Checkout>
+        </CartWrapper>
       </Fragment>
     )
   }
@@ -85,41 +84,64 @@ export default connect(
 
 // STYLES
 const CartWrapper = styled.div`
-  ${mainPadding};
   ${fancyScroll};
+  ${shadow};
   overflow-y: scroll;
   height: 100vh;
   position: fixed;
   right: 0;
   top: 0;
-  width: 100vw;
-  background-color: white;
-  border-left: ${shared.border_thin};
+  width: ${widths.cart};
+  background-color: ${colors.yellow};
+  padding-top: ${heights.header};
   z-index: 9000;
+  transform: translateX(${widths.cart});
+  ${transTransform};
+  &.cart-open {
+    transform: translateX(0);
+  }
+`
+
+const CloseWrapper = styled.div`
+  ${flexCenteredAll};
+  height: 100%;
 `
 
 const CartButtonWrapper = styled.div`
   ${flexCenteredAll};
-  width: ${heights.header};
-  height: ${heights.header};
   position: fixed;
-  top: 0;
-  right: 0;
+  bottom: 1.5rem;
+  right: 1.5rem;
   z-index: 9000;
-  background-color: ${colors.white};
-  border-left: ${shared.border_thin};
-  border-bottom: ${shared.border_thin};
+  ${transTransform};
+  &.cart-open {
+    transform: translateY(-10rem);
+  }
+`
+
+const Checkout = styled.div`
+  position: absolute;
+  bottom: 2rem;
+  right: 2rem;
 `
 
 const CartHeader = styled.header`
   ${flexRowCenteredVert};
   justify-content: space-between;
-  padding: 0 ${spacing.double_pad};
-  width: 100vw;
+  padding-left: ${spacing.double_pad};
+  padding-right: 1rem;
+  width: ${widths.cart};
   height: ${heights.header};
   position: absolute;
   top: 0;
   left: 0;
-  border-bottom: ${shared.border_thin};
-  background-color: ${colors.white};
+  background-color: ${colors.purple};
+  * {
+    color: ${colors.white};
+  }
+`
+
+const CartItems = styled.ul`
+  ${flexColumn};
+  width: 100%;
 `

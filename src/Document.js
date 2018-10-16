@@ -25,6 +25,7 @@ const Document = (props) => {
             removeLineItemInCart={removeLineItemInCart}
           />
         }
+        <Header/>
         <Main id={routeName(props.router.location.pathname).routeClass} className={(props.cart.isCartOpen) ? `cart-open ${props.header_style}` : props.header_style}>
           {props.children}
         </Main>
@@ -49,7 +50,8 @@ const Main = styled.main`
   width: 100vw;
   position: relative;
   min-height: calc(100vh - ${heights.footer});
-  transition: transform 400ms ease;
+  will-change: transform;
+  transition: transform 400ms ease-in-out;
   &.sidebar {
     ${media.desktopNav`
       padding-left: ${widths.sidebar_desktop};
@@ -63,7 +65,7 @@ const Main = styled.main`
     `}
   }
   &.cart-open {
-    transform: translateX(-${widths.cart});
+    transform: translateX(-35vw);
   }
 `
 

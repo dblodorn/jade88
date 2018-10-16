@@ -1,9 +1,9 @@
 {
-  "name": "base_react_router_redux_styled-components",
+  "name": "Jade88",
   "version": "1.0.0",
-  "description": "Start with defaults for basic react site",
+  "description": "Jade88 Store",
   "main": "index.js",
-  "repository": "https://github.com/dblodorn/base_react_router_redux_styled-components.git",
+  "repository": "https://github.com/dblodorn/jade88.git",
   "author": "dblodorn <dain@db13.us>",
   "license": "MIT",
   "private": true,

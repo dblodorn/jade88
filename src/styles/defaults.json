@@ -19,10 +19,10 @@
     "micro_pad": ".75rem"
   },
   "fonts": {
-    "display_font_a": "David Regular",
-    "display_font_b": "Platform Bold",
-    "body_copy_font_a": "Knif Mono",
-    "body_copy_font_b": "FFF Regular"
+    "display_font_a": "FoundersGrotesk Bold",
+    "display_font_b": "FoundersGrotesk Bold",
+    "body_copy_font_a": "FoundersGrotesk Regular",
+    "body_copy_font_b": "FoundersGrotesk Regular"
   },
   "font_sizes": {
     "giant": "7.5rem",
