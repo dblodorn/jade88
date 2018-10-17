@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { media } from './../../styles/mixins'
+import { media } from '../styles/mixins'
 
 export default (props) =>
   <LogoType className={props.orientation}>      

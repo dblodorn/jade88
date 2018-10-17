@@ -2,7 +2,7 @@
   "breakpoints": {
     "mobile": 0,
     "medium": 570,
-    "desktop": 768,
+    "desktop": 860,
     "big": 1500
   },
   "transitions": {

@@ -14,7 +14,6 @@ class Shop extends Component {
     return (
       <Fragment>
         <Hero/>
-        <InfoPopout/>
         <ShopSection name="rollers">
           <Products
             products={state.cart.products}

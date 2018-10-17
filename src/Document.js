@@ -3,10 +3,9 @@ import { connect } from 'react-redux'
 import styled, { injectGlobal } from 'styled-components'
 import { handleCartClose, handleCartOpen, updateQuantityInCart, removeLineItemInCart } from './state/actions'
 import { animationFadeIn, flexColumn, media } from './styles/mixins'
-import { colors, fonts, heights, widths } from './styles/theme.json'
-import { routeName } from './scripts'
-import { HeaderSidebar } from './components'
-import { LoadingPage, Shop } from './views'
+import { colors, fonts, heights, widths, breakpoints } from './styles/theme.json'
+import { Sidebar } from './components'
+import { LoadingPage, Shop, InfoPopout } from './views'
 import Cart from './shopify/Cart'
 import { shop } from './config.json'
 
@@ -24,7 +23,15 @@ const Document = (props) => {
             removeLineItemInCart={removeLineItemInCart}
           />
         }
-        <HeaderSidebar header_state={props.header_state}/>
+        <InfoPopout/>
+        <Sidebar position={'right'}/>
+        {(props.ww >= breakpoints.desktop) &&
+          <Fragment>
+            <Sidebar position={'left'}/>
+            <Sidebar position={'top'}/>
+            <Sidebar position={'bottom'}/>
+          </Fragment>
+        }
         <Main className={(props.cart.isCartOpen) ? `cart-open ${props.header_style}` : props.header_style}>
           <Shop/>
         </Main>
@@ -37,6 +44,7 @@ const Document = (props) => {
 
 export default connect(
   state => ({
+    ww: state.resize_state.window_width,
     router: state.router,
     cart: state.cart,
     header_state: state.header_state,

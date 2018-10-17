@@ -63,8 +63,8 @@ const InfoButtonWrapper = styled.div`
   ${transTransform};
   z-index: 9000;
   position: fixed;
-  top: 1.5rem;
-  left: 1.5rem;
+  top: 3.5rem;
+  left: 4rem;
   &.info-open {
     transform: translateY(-20rem) translateX(-20rem);
     pointer-events: none;

@@ -272,9 +272,9 @@ const BuyButton = styled.button`
     transform: rotate(${props => props.endAngle || `-25deg`});
   }
   ${_.media.desktopNav`
-    font-size: 3.25rem;
-    width: ${props => props.size || `11rem`};
-    height: ${props => props.size || `11rem`};
+    font-size: 2.75rem;
+    width: ${props => props.size || `10rem`};
+    height: ${props => props.size || `10rem`};
   `}
 `
 

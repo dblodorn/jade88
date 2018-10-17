@@ -1,8 +1,9 @@
 import React from 'react'
 import { Carousel, LogoType } from './../components'
-import { scroller, Element } from 'react-scroll'
+import { scroller } from 'react-scroll'
 import styled from 'styled-components'
 import { media, flexCenteredAll } from './../styles/mixins'
+import { widths } from './../styles/theme.json'
 import { LozengeButton } from './../styles/components'
 
 const scrollToElement = () => {
@@ -67,7 +68,7 @@ const Cta = styled.div`
   width: 100%;
   height: 8rem;
   position: absolute;
-  bottom: 0;
+  bottom: ${widths.sidebar_desktop};
   left: 0;
   z-index: 1000;
 `
