@@ -6,30 +6,9 @@ const resizeData = (resize_state) => {
   }
 }
 
-const setMenuState = (bool) => {
+const setInfoState = (bool) => {
   return {
-    type: 'MENU_STATE',
-    bool
-  }
-}
-
-const setHeaderState = (bool) => {
-  return {
-    type: 'HEADER_STATE',
-    bool
-  }
-}
-
-const setHeaderStyle = (string) => {
-  return {
-    type: 'HEADER_STYLE',
-    string
-  }
-}
-
-const setFooterState = (bool) => {
-  return {
-    type: 'FOOTER_STATE',
+    type: 'INFO_STATE',
     bool
   }
 }
@@ -48,13 +27,6 @@ function hasTouch (bool) {
   }
 }
 
-function setModalState (bool) {
-  return {
-    type: 'MODAL_STATE',
-    bool
-  }
-}
-
 const setResizeState = () => {
   return (dispatch) => {
     dispatch(resizeData({
@@ -67,11 +39,7 @@ const setResizeState = () => {
 // EXPORTS
 export {
   setResizeState,
-  setMenuState,
   fontsLoaded,
   hasTouch,
-  setModalState,
-  setHeaderState,
-  setFooterState,
-  setHeaderStyle
+  setInfoState
 }

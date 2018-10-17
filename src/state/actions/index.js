@@ -1,19 +1,9 @@
 import { 
   setResizeState,
-  setMenuState,
   hasTouch,
   fontsLoaded,
-  setModalState,
-  setHeaderState,
-  setFooterState,
-  setHeaderStyle
+  setInfoState
 } from './a_window_data'
-
-import { 
-  setPage,
-  setVideoPlaying,
-  setVideoState
-} from './a_content-state'
 
 import {
   updateQuantityInCart,
@@ -25,16 +15,9 @@ import {
 
 export {
   setResizeState,
-  setMenuState,
-  setHeaderState,
-  setPage,
-  setVideoPlaying,
   hasTouch,
   fontsLoaded,
-  setModalState,
-  setVideoState,
-  setFooterState,
-  setHeaderStyle,
+  setInfoState,
   updateQuantityInCart,
   removeLineItemInCart,
   handleCartClose,

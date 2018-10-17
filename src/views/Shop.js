@@ -14,7 +14,7 @@ class Shop extends Component {
     return (
       <Fragment>
         <Hero/>
-        <ShopSection>
+        <ShopSection name="rollers">
           <Products
             products={state.cart.products}
             client={state.cart.client}

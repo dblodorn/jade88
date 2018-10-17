@@ -1,13 +1,28 @@
 import React from 'react'
 import { Carousel, LogoType } from './../components'
+import { scroller, Element } from 'react-scroll'
 import styled from 'styled-components'
-import { flexCenteredAll, media } from './../styles/mixins'
+import { media, flexCenteredAll } from './../styles/mixins'
+import { LozengeButton } from './../styles/components'
 
-export default (props) =>
+const scrollToElement = () => {
+  console.log('click')
+  scroller.scrollTo('rollers', {
+    duration: 750,
+    smooth: true
+  })
+}
+
+export default () =>
   <CarouselWrapper>
     <LogoWrapper>
       <LogoType/>
     </LogoWrapper>
+    <Cta>
+      <LozengeButton onClick={scrollToElement}>
+        <span>Roll With Us</span>
+      </LozengeButton>
+    </Cta>
     <Carousel 
       slides={slides}
       navigation={false}
@@ -25,7 +40,6 @@ const CarouselWrapper = styled.section`
   height: 100vh;
   position: relative;
   max-height: 100vh;
-  pointer-events: none;
 `
 
 const LogoWrapper = styled.div`
@@ -46,6 +60,16 @@ const LogoWrapper = styled.div`
     opacity: .8;
     padding: 0;
   `}
+`
+
+const Cta = styled.div`
+  ${flexCenteredAll}
+  width: 100%;
+  height: 8rem;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  z-index: 1000;
 `
 
 // SLIDES
