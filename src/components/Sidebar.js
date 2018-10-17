@@ -10,7 +10,7 @@ import Ticker from './Ticker'
 const manifesto = `We mean celebration.&nbsp;&nbsp;&nbsp;&nbsp;We mean indulgence.&nbsp;&nbsp;&nbsp;&nbsp;We mean extravagance.&nbsp;&nbsp;&nbsp;&nbsp;Be extra.&nbsp;&nbsp;&nbsp;&nbsp;Be mega.&nbsp;&nbsp;&nbsp;&nbsp;Be moisturized.&nbsp;&nbsp;&nbsp;&nbsp;Roll with us.&nbsp;&nbsp;&nbsp;&nbsp;We mean celebration.&nbsp;&nbsp;&nbsp;&nbsp;We mean indulgence.&nbsp;&nbsp;&nbsp;&nbsp;We mean extravagance.&nbsp;&nbsp;&nbsp;&nbsp;Be extra.&nbsp;&nbsp;&nbsp;&nbsp;Be mega.&nbsp;&nbsp;&nbsp;&nbsp;Be moisturized.&nbsp;&nbsp;&nbsp;&nbsp;Roll with us.`
 
 const Sidebar = (props) =>
-  <SidebarWrapper className={(props.cart.isCartOpen || props.info) ? `${props.position} cart-open` : `${props.position}`}>
+  <SidebarWrapper className={(props.cart.isCartOpen || props.info || (props.scroll == 'down')) ? `${props.position} cart-open` : `${props.position}`}>
     <SidebarTop>
       <Logo theme={'a'} title={meta_defaults.title} orientation={props.orientation}/>
     </SidebarTop>
@@ -27,7 +27,8 @@ const Sidebar = (props) =>
 export default connect(
   state => ({
     cart: state.cart,
-    info: state.info
+    info: state.info,
+    scroll: state.scroll_direction
   })
 )(Sidebar)
 

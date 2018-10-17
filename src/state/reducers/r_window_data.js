@@ -34,9 +34,29 @@ const touchState = (state = false, action) => {
   }
 }
 
+const scrollDirectionState = (state = 'top', action) => {
+  switch (action.type) {
+    case 'SCROLL_DIRECTION':
+      return action.string;
+    default:
+      return state;
+  }
+}
+
+const sidebarState = (state = true, action) => {
+  switch (action.type) {
+    case 'SIDEBAR_STATE':
+      return action.bool;
+    default:
+      return state;
+  }
+}
+
 export {
   resizeState,
   infoState,
   fontState,
-  touchState
+  touchState,
+  scrollDirectionState,
+  sidebarState
 }

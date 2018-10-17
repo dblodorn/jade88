@@ -2,7 +2,9 @@ import {
   setResizeState,
   hasTouch,
   fontsLoaded,
-  setInfoState
+  setInfoState,
+  setSideBarState,
+  setScrollDirection
 } from './a_window_data'
 
 import {
@@ -22,5 +24,7 @@ export {
   removeLineItemInCart,
   handleCartClose,
   handleCartOpen,
-  addVariantToCart
+  addVariantToCart,
+  setSideBarState,
+  setScrollDirection
 }

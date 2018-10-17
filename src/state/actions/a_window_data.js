@@ -27,6 +27,20 @@ const hasTouch = (bool) => {
   }
 }
 
+const setScrollDirection = (string) => {
+  return {
+    type: 'SCROLL_DIRECTION',
+    string
+  };
+}
+
+const setSideBarState = (bool) => {
+  return {
+    type: 'SIDEBAR_STATE',
+    bool
+  };
+}
+
 const setResizeState = () => {
   return (dispatch) => {
     dispatch(resizeData({
@@ -41,5 +55,7 @@ export {
   setResizeState,
   fontsLoaded,
   hasTouch,
-  setInfoState
+  setInfoState,
+  setScrollDirection,
+  setSideBarState
 }
