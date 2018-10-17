@@ -13,14 +13,14 @@ const setInfoState = (bool) => {
   }
 }
 
-function fontsLoaded (bool) {
+const fontsLoaded = (bool) => {
   return {
     type: 'FONTS_LOADED',
     bool
   }
 }
 
-function hasTouch (bool) {
+const hasTouch = (bool) => {
   return {
     type: 'HAS_TOUCH',
     bool

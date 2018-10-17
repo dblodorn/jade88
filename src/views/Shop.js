@@ -2,11 +2,11 @@ import React, { Fragment, Component } from 'react'
 import { addVariantToCart } from './../state/actions'
 import { connect } from 'react-redux'
 import { store } from './../state/store'
-import styled, { ThemeProvider } from 'styled-components'
-import { themeA, themes } from './../styles/theme'
+import styled from 'styled-components'
 import { Products } from './../shopify'
 import { Section } from './../styles/components'
 import Hero from './Hero'
+import InfoPopout from './InfoPopout'
 
 class Shop extends Component {
   render() {
@@ -14,6 +14,7 @@ class Shop extends Component {
     return (
       <Fragment>
         <Hero/>
+        <InfoPopout/>
         <ShopSection name="rollers">
           <Products
             products={state.cart.products}
