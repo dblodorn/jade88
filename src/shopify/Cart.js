@@ -6,6 +6,7 @@ import { H2, BuyButton, LozengeButton } from './../styles/components'
 import { Close } from './../components'
 import { widths, heights, colors, spacing } from './../styles/theme.json'
 import LineItem from './LineItem'
+import CartButton from './CartButton'
 
 class Cart extends Component {
   constructor(props) {
@@ -32,7 +33,7 @@ class Cart extends Component {
     return (
       <Fragment>
         <CartButtonWrapper className={this.props.cart.isCartOpen && 'cart-open'}>
-          <BuyButton bgColor={colors.magenta} startAngle={`-20deg`} endAngle={`20deg`} className="App__view-cart" onClick={this.props.handleCartOpen}>Cart</BuyButton>
+          <CartButton clickFunction={this.props.handleCartOpen}/>
         </CartButtonWrapper>
         <CartWrapper className={(this.props.cart.isCartOpen) && 'cart-open'}>
           <CartHeader>

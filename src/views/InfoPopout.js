@@ -3,11 +3,11 @@ import { connect } from 'react-redux'
 import styled from 'styled-components'
 import { setInfoState } from './../state/actions'
 import { Close } from './../components'
-import { media, shadow, fancyScroll, transTransform, flexCenteredAll, mainPadding } from './../styles/mixins'
+import { media, shadow, fancyScroll, transTransform, flexCenteredAll } from './../styles/mixins'
 import { StyledMarkup, BuyButton } from './../styles/components'
 import { colors, heights, widths } from './../styles/theme.json'
 
-const info = `<h3>Relax and indulge yourself with the cooling, massaging action of the roller.</h3><p>Improve blood circulation and tighten up those pores.</p><p>Reduce puffiness and dark circles.</p><p>Massage nasty toxins from your body through lymphatic massage.</p><p>Evenly distribute and soak facial tonics and oils deep into your skin as you roll.</p>`
+const info = `<h2>Relax and indulge yourself with the cooling, massaging action of the roller.</h2><p>Improve blood circulation and tighten up those pores.</p><p>Reduce puffiness and dark circles.</p><p>Massage nasty toxins from your body through lymphatic massage.</p><p>Evenly distribute and soak facial tonics and oils deep into your skin as you roll.</p>`
 
 const InfoPopup = (props) =>
   <Fragment>
@@ -37,7 +37,8 @@ const InfoWrapper = styled.div`
   ${fancyScroll};
   ${shadow};
   ${transTransform};
-  ${mainPadding};
+  ${flexCenteredAll};
+  padding: 6rem 2rem 10rem;
   overflow-y: scroll;
   height: 100vh;
   width: 100vw;
@@ -53,6 +54,7 @@ const InfoWrapper = styled.div`
   }
   ${media.desktopNav`
     width: 75vw;
+    padding: 6rem 6rem 10rem;
   `}
   ${media.big`
     width: ${widths.cart};

@@ -33,6 +33,7 @@ const LogoType = styled.div`
   object-fit: contain;
   display: block;
   width: 70%;
+  max-width: 45rem;
   padding: .5rem;
   svg {
     width: 100%;

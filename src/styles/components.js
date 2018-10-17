@@ -110,6 +110,7 @@ const StyledMarkup = styled.div`
     ${_.mediumType};
     color: ${props => props.theme.display_font_color};
     font-family: ${fonts.display_font_a};
+    padding-bottom: 1.5rem;
   }
   h3 {
     ${_.mediumType};
@@ -276,6 +277,11 @@ const BuyButton = styled.button`
     width: ${props => props.size || `10rem`};
     height: ${props => props.size || `10rem`};
   `}
+  svg {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
 `
 
 export {

@@ -1,8 +1,9 @@
 import React from 'react'
 import { Carousel, LogoType } from './../components'
+import { connect } from 'react-redux'
 import { scroller } from 'react-scroll'
 import styled from 'styled-components'
-import { media, flexCenteredAll } from './../styles/mixins'
+import { media, flexCenteredAll, absoluteCentered, slowBounce } from './../styles/mixins'
 import { widths } from './../styles/theme.json'
 import { LozengeButton } from './../styles/components'
 
@@ -14,14 +15,23 @@ const scrollToElement = () => {
   })
 }
 
-export default () =>
+const Down = () =>
+  <DownWrapper>
+    <svg width="16" height="16" version="1.1" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" xmlSpace="preserve">
+      <g fill="#ffffff">
+        <path d="M8.001,14c0.326,0,0.632-0.159,0.819-0.427l7-10c0.214-0.305,0.238-0.704,0.068-1.035 C15.715,2.207,15.374,2,15.001,2H0.999C0.626,2,0.285,2.207,0.112,2.538c-0.17,0.331-0.146,0.73,0.068,1.035l7,10 C7.367,13.841,7.673,14,7.999,14C8,14,8,14,8.001,14C8,14,8,14,8.001,14z" fill="#ffffff"/>
+      </g>
+    </svg>
+  </DownWrapper>
+
+const Hero = (props) =>
   <CarouselWrapper>
     <LogoWrapper>
       <LogoType/>
     </LogoWrapper>
-    <Cta>
+    <Cta className={props.scroll}>
       <LozengeButton onClick={scrollToElement}>
-        <span>Roll With Us</span>
+        <Down/><span>Roll With Us</span><Down/>
       </LozengeButton>
     </Cta>
     <Carousel 
@@ -34,7 +44,26 @@ export default () =>
     />
   </CarouselWrapper>
 
+export default connect(
+  state => ({
+    scroll: state.scroll_direction
+  })
+)(Hero)
+
 // STYLES
+const DownWrapper = styled.div`
+  width: 16px;
+  height: 16px;
+  position: relative;
+  margin: 0 1rem;
+  svg {
+    ${absoluteCentered};
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+`
+
 const CarouselWrapper = styled.section`
   display: block;
   width: 100%;
@@ -71,6 +100,12 @@ const Cta = styled.div`
   bottom: ${widths.sidebar_desktop};
   left: 0;
   z-index: 1000;
+  opacity: 0;
+  transition: opacity 300ms ease-in-out;
+  will-change: opacity;
+  &.at-top {
+    ${slowBounce};
+  }
 `
 
 // SLIDES
