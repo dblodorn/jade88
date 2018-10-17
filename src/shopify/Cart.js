@@ -93,6 +93,7 @@ const CartWrapper = styled.div`
   position: fixed;
   right: 0;
   top: 0;
+  z-index: 9000;
   background-color: ${colors.green};
   padding-top: ${heights.header};
   z-index: 9000;
@@ -118,10 +119,10 @@ const CloseWrapper = styled.div`
 const CartButtonWrapper = styled.div`
   ${flexCenteredAll};
   ${transTransform};
-  z-index: 9000;
+  z-index: 1000;
   position: fixed;
-  top: 1.5rem;
-  left: 1.5rem;
+  top: 1rem;
+  left: 1rem;
   &.cart-open {
     transform: translateY(-20rem) translateX(-20rem);
     pointer-events: none;
@@ -140,6 +141,10 @@ const CartButtonWrapper = styled.div`
 const Checkout = styled.div`
   ${flexRowCenteredVert};
   position: relative;
+  padding-top: 1.5rem;
+  ${media.desktopNav`
+    padding-top: 0;
+  `}
 `
 
 const CartHeader = styled.header`
@@ -158,21 +163,34 @@ const CartHeader = styled.header`
   }
 `
 const CartFooter = styled.footer`
-  ${flexRow};
+  ${flexColumn};
   ${mainPadding};
   justify-content: space-between;
   width: 100%;
+  ${media.desktopNav`
+    ${flexRow};
+  `}
 `
 
 const CartInfoGrid = styled.div`
   ${flexRow};
+  justify-content: space-between;
 `
 
 const InfoItem = styled.div`
   padding-right: ${spacing.double_pad};
+  &:last-child {
+    padding-right: 0;
+  }
   span {
     ${mediumType};
+    font-size: 3.125rem;
   }
+  ${media.desktopNav`
+    &:last-child {
+      padding-right: ${spacing.double_pad};
+    }
+  `}
 `
 
 const CartItems = styled.ul`

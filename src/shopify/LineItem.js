@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import styled from 'styled-components'
-import { staggeredColor, flexRow, mainPadding, mediumType, flexRowCenteredAll, bigType } from './../styles/mixins'
+import { staggeredColor, flexRow, mainPadding, mediumType, flexRowCenteredAll, flexCenteredAll, bigType, media } from './../styles/mixins'
 import { BuyButton } from './../styles/components'
 import { heights, colors, spacing } from './../styles/theme.json'
 import { toLowerCaseDash } from './../scripts'
@@ -40,16 +40,16 @@ class LineItem extends Component {
           </ContetntRow>
           <ContetntRow>
             <QuantityContainer>
-              <AdjustButton size={`3rem`} startAngle={`0deg`} bgColor={`red`} className="Line-item__quantity-update" onClick={() => this.decrementQuantity(this.props.line_item.id)}><span>-</span></AdjustButton>
+              <AdjustButton sizeMobie={`3.25rem`} size={`3rem`} startAngle={`0deg`} bgColor={`red`} onClick={() => this.decrementQuantity(this.props.line_item.id)}><span>-</span></AdjustButton>
               <span className="quantity">{this.props.line_item.quantity}</span>
-              <AdjustButton size={`3rem`} startAngle={`0deg`} bgColor={`red`} className="Line-item__quantity-update" onClick={() => this.incrementQuantity(this.props.line_item.id)}><span>+</span></AdjustButton>
+              <AdjustButton sizeMobie={`3.25rem`} size={`3rem`} startAngle={`0deg`} bgColor={`red`} onClick={() => this.incrementQuantity(this.props.line_item.id)}><span>+</span></AdjustButton>
             </QuantityContainer>
           </ContetntRow>
           <Price>
             <span className="price">
               ${(this.props.line_item.quantity * this.props.line_item.variant.price).toFixed(2)}
             </span>
-            <AdjustButton size={`3rem`} startAngle={`0deg`} bgColor={`red`} className="remove" onClick={()=> this.props.removeLineItemInCart(this.props.line_item.id)}><span>x</span></AdjustButton>
+            <AdjustButton sizeMobie={`3.25rem`} size={`3rem`} startAngle={`0deg`} bgColor={`red`} className="remove" onClick={()=> this.props.removeLineItemInCart(this.props.line_item.id)}><span>x</span></AdjustButton>
           </Price>
         </LineItemContent>
       </Item>
@@ -94,7 +94,7 @@ const LineItemContent = styled.div`
 const ContetntRow = styled.div`
   padding: 0 ${spacing.double_pad};
   ${flexRowCenteredAll};
-  height: ${heights.header};
+  padding: 1rem .5rem;
   border-bottom: 3px solid ${colors.black};
   position: relative;
   span {
@@ -106,6 +106,9 @@ const ContetntRow = styled.div`
   &:last-child {
     border: 0;
   }
+  ${media.desktopNav`
+    height: ${heights.header};
+  `}
 `
 
 const QuantityContainer = styled.div`
@@ -134,9 +137,10 @@ const Price = styled.div`
 `
 
 const AdjustButton = styled(BuyButton)`
+  ${flexCenteredAll};
   span {
-    font-size: 2rem;
-    line-height: 0;
+    font-size: 1.5rem;
+    line-height: 1;
     display: block;
   }
   &.remove {

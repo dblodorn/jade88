@@ -12,7 +12,7 @@ const info = `<h2>Relax and indulge yourself with the cooling, massaging action 
 const InfoPopup = (props) =>
   <Fragment>
     <InfoButtonWrapper className={(props.info || props.scroll == 'down') && 'info-open'}>
-      <BuyButton bgColor={colors.blue} startAngle={`20deg`} endAngle={`-20deg`} className="App__view-cart" onClick={() => props.info_toggle(!props.info)}>Info</BuyButton>
+      <BuyButton bgColor={colors.blue} startAngle={`20deg`} endAngle={`-20deg`} className="App__view-cart" onClick={() => props.info_toggle(!props.info)}><span>Info</span></BuyButton>
     </InfoButtonWrapper>
     <InfoWrapper className={props.info && 'info-open'}>
       <CloseWrapper>
@@ -64,14 +64,18 @@ const InfoWrapper = styled.div`
 const InfoButtonWrapper = styled.div`
   ${flexCenteredAll};
   ${transTransform};
-  z-index: 9000;
+  z-index: 1000;
   position: fixed;
-  top: 3.5rem;
-  left: 4rem;
+  top: 9rem;
+  left: 1rem;
   &.info-open {
     transform: translateY(-20rem) translateX(-20rem);
     pointer-events: none;
   }
+  ${media.desktopNav`
+    top: 3.5rem;
+    left: 4rem;
+  `}
 `
 
 const CloseWrapper = styled.div`

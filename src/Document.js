@@ -59,12 +59,16 @@ const Main = styled.main`
   ${flexColumn};
   width: 100vw;
   position: relative;
-  min-height: calc(100vh - ${heights.footer});
+  min-height: 100vh;
+  overflow-x: hidden;
+  overflow-y: scroll;
   will-change: transform;
   transition: transform 400ms ease-in-out;
+  -webkit-overflow-scrolling: touch;
   padding-right: ${widths.sidebar_desktop};
   ${media.desktopNav`
     padding-right: 0;
+    overflow-y: visible;
   `}
   &.cart-open {
     transform: translateX(-35vw);
