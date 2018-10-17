@@ -2,7 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import styled, { css } from 'styled-components'
 import { shadow, transTransform } from './../styles/mixins'
-import { colors, widths } from './../styles/theme.json'
+import { colors, widths, breakpoints } from './../styles/theme.json'
 import { meta_defaults } from './../config.json'
 import Logo from './Logo'
 import Ticker from './Ticker'
@@ -10,7 +10,7 @@ import Ticker from './Ticker'
 const manifesto = `We mean celebration.&nbsp;&nbsp;&nbsp;&nbsp;We mean indulgence.&nbsp;&nbsp;&nbsp;&nbsp;We mean extravagance.&nbsp;&nbsp;&nbsp;&nbsp;Be extra.&nbsp;&nbsp;&nbsp;&nbsp;Be mega.&nbsp;&nbsp;&nbsp;&nbsp;Be moisturized.&nbsp;&nbsp;&nbsp;&nbsp;Roll with us.&nbsp;&nbsp;&nbsp;&nbsp;We mean celebration.&nbsp;&nbsp;&nbsp;&nbsp;We mean indulgence.&nbsp;&nbsp;&nbsp;&nbsp;We mean extravagance.&nbsp;&nbsp;&nbsp;&nbsp;Be extra.&nbsp;&nbsp;&nbsp;&nbsp;Be mega.&nbsp;&nbsp;&nbsp;&nbsp;Be moisturized.&nbsp;&nbsp;&nbsp;&nbsp;Roll with us.`
 
 const Sidebar = (props) =>
-  <SidebarWrapper className={(props.cart.isCartOpen || props.info || (props.scroll == 'down')) ? `${props.position} cart-open` : `${props.position}`}>
+  <SidebarWrapper className={(props.cart.isCartOpen || props.info || ((props.scroll == 'down') && (props.ww >= breakpoints.desktop))) ? `${props.position} cart-open` : `${props.position} ${props.scroll}`}>
     <SidebarTop>
       <Logo theme={'a'} title={meta_defaults.title} orientation={props.orientation}/>
     </SidebarTop>
@@ -28,7 +28,8 @@ export default connect(
   state => ({
     cart: state.cart,
     info: state.info,
-    scroll: state.scroll_direction
+    scroll: state.scroll_direction,
+    ww: state.resize_state.window_width
   })
 )(Sidebar)
 
@@ -59,7 +60,8 @@ const SidebarWrapper = styled.div`
     ${sideBarVert};
     right: 0;
     top: 0;
-    &.cart-open {
+    &.cart-open,
+    &.at-bottom {
       transform: translateX(${widths.sidebar_desktop});
     }
   }
@@ -67,7 +69,8 @@ const SidebarWrapper = styled.div`
     ${sideBarVert};
     left: 0;
     top: 0;
-    &.cart-open {
+    &.cart-open,
+    &.at-bottom {
       transform: translateX(-${widths.sidebar_desktop});
     }
   }
@@ -75,7 +78,8 @@ const SidebarWrapper = styled.div`
     ${sideBarHorizontal};
     left: 0;
     top: 0;
-    &.cart-open {
+    &.cart-open,
+    &.at-bottom {
       transform: translateY(-${widths.sidebar_desktop});
     }
   }
@@ -83,7 +87,8 @@ const SidebarWrapper = styled.div`
     ${sideBarHorizontal};
     left: 0;
     bottom: 0;
-    &.cart-open {
+    &.cart-open,
+    &.at-bottom {
       transform: translateY(${widths.sidebar_desktop});
     }
   }

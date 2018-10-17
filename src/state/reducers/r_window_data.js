@@ -43,10 +43,10 @@ const scrollDirectionState = (state = 'top', action) => {
   }
 }
 
-const sidebarState = (state = true, action) => {
+const currentPixelState = (state = false, action) => {
   switch (action.type) {
-    case 'SIDEBAR_STATE':
-      return action.bool;
+    case 'SCROLL_PIXEL':
+      return action.string;
     default:
       return state;
   }
@@ -58,5 +58,5 @@ export {
   fontState,
   touchState,
   scrollDirectionState,
-  sidebarState
+  currentPixelState
 }

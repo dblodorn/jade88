@@ -34,10 +34,10 @@ const setScrollDirection = (string) => {
   };
 }
 
-const setSideBarState = (bool) => {
+const setCurrentPixel = (string) => {
   return {
-    type: 'SIDEBAR_STATE',
-    bool
+    type: 'SCROLL_PIXEL',
+    string
   };
 }
 
@@ -57,5 +57,5 @@ export {
   hasTouch,
   setInfoState,
   setScrollDirection,
-  setSideBarState
+  setCurrentPixel
 }

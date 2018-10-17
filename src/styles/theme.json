@@ -19,7 +19,7 @@
   "heights": {
     "header": "7rem",
     "mobile_header": "6rem",
-    "footer": "6rem",
+    "footer": "20rem",
     "player_icons": "2.5rem"
   },
   "spacing": {

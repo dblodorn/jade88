@@ -4,7 +4,7 @@ import styled, { injectGlobal } from 'styled-components'
 import { handleCartClose, handleCartOpen, updateQuantityInCart, removeLineItemInCart } from './state/actions'
 import { animationFadeIn, flexColumn, media } from './styles/mixins'
 import { colors, fonts, heights, widths, breakpoints } from './styles/theme.json'
-import { Sidebar } from './components'
+import { Sidebar, Footer } from './components'
 import { LoadingPage, Shop, InfoPopout } from './views'
 import Cart from './shopify/Cart'
 import { shop } from './config.json'
@@ -35,6 +35,7 @@ const Document = (props) => {
         <Main className={(props.cart.isCartOpen) ? `cart-open ${props.header_style}` : props.header_style}>
           <Shop/>
         </Main>
+        <Footer/>
       </Fragment>
     )
   } else {

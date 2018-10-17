@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux'
-import { resizeState, fontState, touchState, infoState, scrollDirectionState, sidebarState } from './r_window_data'
+import { resizeState, fontState, touchState, infoState, scrollDirectionState, currentPixelState } from './r_window_data'
 import cart from './r_cart'
 
 const rootReducer = combineReducers({
@@ -8,7 +8,7 @@ const rootReducer = combineReducers({
   fonts_loaded: fontState,
   touch_state: touchState,
   scroll_direction: scrollDirectionState,
-  sidebar_state: sidebarState,
+  current_pixel: currentPixelState,
   info: infoState
 })
 

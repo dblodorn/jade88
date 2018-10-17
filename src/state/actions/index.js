@@ -3,7 +3,7 @@ import {
   hasTouch,
   fontsLoaded,
   setInfoState,
-  setSideBarState,
+  setCurrentPixel,
   setScrollDirection
 } from './a_window_data'
 
@@ -25,6 +25,6 @@ export {
   handleCartClose,
   handleCartOpen,
   addVariantToCart,
-  setSideBarState,
+  setCurrentPixel,
   setScrollDirection
 }
