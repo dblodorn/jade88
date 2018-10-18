@@ -9,16 +9,11 @@ import {
 } from "./../styles/mixins";
 import { heights, colors, spacing } from "./../styles/theme.json";
 
-const Footer = () => (
+export default () => (
   <FooterWrapper>
     <p>hi@jadeeightyeight.com</p>
   </FooterWrapper>
 );
-
-export default connect(
-  state => ({}),
-  dispatch => ({})
-)(Footer);
 
 // STYLES
 const FooterWrapper = styled.footer`
