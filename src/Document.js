@@ -1,19 +1,30 @@
-import React, { Fragment } from 'react'
-import { connect } from 'react-redux'
-import styled, { injectGlobal } from 'styled-components'
-import { handleCartClose, handleCartOpen, updateQuantityInCart, removeLineItemInCart } from './state/actions'
-import { animationFadeIn, flexColumn, media } from './styles/mixins'
-import { colors, fonts, heights, widths, breakpoints } from './styles/theme.json'
-import { Sidebar, Footer } from './components'
-import { LoadingPage, Shop, InfoPopout } from './views'
-import Cart from './shopify/Cart'
-import { shop } from './config.json'
+import React, { Fragment } from "react";
+import { connect } from "react-redux";
+import styled, { injectGlobal } from "styled-components";
+import {
+  handleCartClose,
+  handleCartOpen,
+  updateQuantityInCart,
+  removeLineItemInCart
+} from "./state/actions";
+import { animationFadeIn, flexColumn, media } from "./styles/mixins";
+import {
+  colors,
+  fonts,
+  heights,
+  widths,
+  breakpoints
+} from "./styles/theme.json";
+import { Sidebar, Footer } from "./components";
+import { LoadingPage, Shop, InfoPopout } from "./views";
+import Cart from "./shopify/Cart";
+import { shop } from "./config.json";
 
-const Document = (props) => {
+const Document = props => {
   if (props.cart) {
     return (
       <Fragment>
-        {(shop) &&
+        {shop && (
           <Cart
             checkout={props.cart.checkout}
             isCartOpen={props.cart.isCartOpen}
@@ -22,43 +33,47 @@ const Document = (props) => {
             updateQuantityInCart={updateQuantityInCart}
             removeLineItemInCart={removeLineItemInCart}
           />
-        }
-        <InfoPopout/>
-        <Sidebar position={'right'}/>
-        {(props.ww >= breakpoints.desktop) &&
+        )}
+        <InfoPopout />
+        <Sidebar position={"right"} />
+        {props.ww >= breakpoints.desktop && (
           <Fragment>
-            <Sidebar position={'left'}/>
-            <Sidebar position={'top'}/>
-            <Sidebar position={'bottom'}/>
+            <Sidebar position={"left"} />
+            <Sidebar position={"top"} />
+            <Sidebar position={"bottom"} />
           </Fragment>
-        }
-        <Main className={(props.cart.isCartOpen) ? `cart-open ${props.header_style}` : props.header_style}>
-          <Shop/>
+        )}
+        <Main
+          className={
+            props.cart.isCartOpen
+              ? `cart-open ${props.header_style}`
+              : props.header_style
+          }
+        >
+          <Shop />
         </Main>
-        <Footer/>
+        <Footer />
       </Fragment>
-    )
+    );
   } else {
-    return <LoadingPage/>
+    return <LoadingPage />;
   }
-}
+};
 
-export default connect(
-  state => ({
-    ww: state.resize_state.window_width,
-    router: state.router,
-    cart: state.cart,
-    header_state: state.header_state,
-    style: state.header_style
-  })
-)(Document)
+export default connect(state => ({
+  ww: state.resize_state.window_width,
+  router: state.router,
+  cart: state.cart,
+  header_state: state.header_state,
+  style: state.header_style
+}))(Document);
 
 // MAIN STYLING
 const Main = styled.main`
   ${animationFadeIn(1000, 150)};
   ${flexColumn};
   width: 100vw;
-  position: relative;
+  position: fixed;
   min-height: 100vh;
   overflow-x: hidden;
   overflow-y: scroll;
@@ -67,13 +82,13 @@ const Main = styled.main`
   -webkit-overflow-scrolling: touch;
   padding-right: ${widths.sidebar_desktop};
   ${media.desktopNav`
+    position: relative;
     padding-right: 0;
     overflow-y: visible;
-  `}
-  &.cart-open {
+  `} &.cart-open {
     transform: translateX(-35vw);
   }
-`
+`;
 
 // NORMALIZE CSS
 injectGlobal`
@@ -109,4 +124,4 @@ injectGlobal`
     font-size: 15vmin;
     ${fonts.sans};
   }
-`
+`;

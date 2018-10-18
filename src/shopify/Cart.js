@@ -1,12 +1,23 @@
-import React, { Component, Fragment } from 'react'
-import { connect } from 'react-redux'
-import styled from 'styled-components'
-import { mainPadding, flexCenteredAll, fancyScroll, flexRow, flexRowCenteredVert, shadow, transTransform, flexColumn, media, mediumType  } from './../styles/mixins'
-import { H2, BuyButton, LozengeButton } from './../styles/components'
-import { Close } from './../components'
-import { widths, heights, colors, spacing } from './../styles/theme.json'
-import LineItem from './LineItem'
-import CartButton from './CartButton'
+import React, { Component, Fragment } from "react";
+import { connect } from "react-redux";
+import styled from "styled-components";
+import {
+  mainPadding,
+  flexCenteredAll,
+  fancyScroll,
+  flexRow,
+  flexRowCenteredVert,
+  shadow,
+  transTransform,
+  flexColumn,
+  media,
+  mediumType
+} from "./../styles/mixins";
+import { H2, BuyButton, LozengeButton } from "./../styles/components";
+import { Close } from "./../components";
+import { widths, heights, colors, spacing } from "./../styles/theme.json";
+import LineItem from "./LineItem";
+import CartButton from "./CartButton";
 
 class Cart extends Component {
   constructor(props) {
@@ -19,7 +30,7 @@ class Cart extends Component {
   }
 
   render() {
-    let line_items = this.props.checkout.lineItems.map((line_item) => {
+    let line_items = this.props.checkout.lineItems.map(line_item => {
       return (
         <LineItem
           updateQuantityInCart={this.props.updateQuantityInCart}
@@ -32,55 +43,66 @@ class Cart extends Component {
 
     return (
       <Fragment>
-        <CartButtonWrapper className={this.props.cart.isCartOpen && 'cart-open'}>
-          <CartButton clickFunction={this.props.handleCartOpen}/>
+        <CartButtonWrapper
+          className={this.props.cart.isCartOpen && "cart-open"}
+        >
+          <CartButton clickFunction={this.props.handleCartOpen} />
         </CartButtonWrapper>
-        <CartWrapper className={(this.props.cart.isCartOpen) && 'cart-open'}>
+        <CartWrapper className={this.props.cart.isCartOpen && "cart-open"}>
           <CartHeader>
             <H2>CART</H2>
             <CloseWrapper>
-              <Close clickFunction={this.props.handleCartClose} color={colors.white}/>
+              <Close
+                clickFunction={this.props.handleCartClose}
+                color={colors.white}
+              />
             </CloseWrapper>
           </CartHeader>
-          <CartItems>
-            {line_items}
-          </CartItems>
+          <CartItems>{line_items}</CartItems>
           <CartFooter>
             <CartInfoGrid>
               <InfoItem>
-                <div className="Cart-info__total Cart-info__small">Subtotal</div>
+                <div className="Cart-info__total Cart-info__small">
+                  Subtotal
+                </div>
                 <div className="Cart-info__pricing">
-                  <span className="pricing">$ {this.props.checkout.subtotalPrice}</span>
+                  <span className="pricing">
+                    $ {this.props.checkout.subtotalPrice}
+                  </span>
                 </div>
               </InfoItem>
               <InfoItem>
                 <div className="Cart-info__total Cart-info__small">Taxes</div>
                 <div className="Cart-info__pricing">
-                  <span className="pricing">$ {this.props.checkout.totalTax}</span>
+                  <span className="pricing">
+                    $ {this.props.checkout.totalTax}
+                  </span>
                 </div>
               </InfoItem>
               <InfoItem>
                 <div className="Cart-info__total Cart-info__small">Total</div>
                 <div className="Cart-info__pricing">
-                  <span className="pricing">$ {this.props.checkout.totalPrice}</span>
+                  <span className="pricing">
+                    $ {this.props.checkout.totalPrice}
+                  </span>
                 </div>
               </InfoItem>
             </CartInfoGrid>
             <Checkout>
-              <LozengeButton onClick={this.openCheckout}><span>Check Out</span></LozengeButton>
+              <LozengeButton onClick={this.openCheckout}>
+                <span>Check Out</span>
+              </LozengeButton>
             </Checkout>
           </CartFooter>
         </CartWrapper>
       </Fragment>
-    )
+    );
   }
 }
 
-export default connect(
-  state => ({
-    cart: state.cart
-  })
-)(Cart)
+export default connect(state => ({
+  cart: state.cart
+}))(Cart);
 
 // STYLES
 const CartWrapper = styled.div`
@@ -104,17 +126,16 @@ const CartWrapper = styled.div`
   ${media.desktopNav`
     width: 75vw;
     transform: translateX(75vw);
-  `}
-  ${media.big`
+  `} ${media.big`
     width: ${widths.cart};
     transform: translateX(${widths.cart});
-  `}
-`
+  `};
+`;
 
 const CloseWrapper = styled.div`
   ${flexCenteredAll};
   height: 100%;
-`
+`;
 
 const CartButtonWrapper = styled.div`
   ${flexCenteredAll};
@@ -135,17 +156,18 @@ const CartButtonWrapper = styled.div`
     &.cart-open {
       transform: translateY(30rem) translateX(30rem);
     }
-  `}
-`
+  `};
+`;
 
 const Checkout = styled.div`
   ${flexRowCenteredVert};
   position: relative;
   padding-top: 1.5rem;
+  padding-bottom: 4rem;
   ${media.desktopNav`
     padding-top: 0;
-  `}
-`
+  `};
+`;
 
 const CartHeader = styled.header`
   ${flexRowCenteredVert};
@@ -161,7 +183,7 @@ const CartHeader = styled.header`
   * {
     color: ${colors.white};
   }
-`
+`;
 const CartFooter = styled.footer`
   ${flexColumn};
   ${mainPadding};
@@ -169,13 +191,13 @@ const CartFooter = styled.footer`
   width: 100%;
   ${media.desktopNav`
     ${flexRow};
-  `}
-`
+  `};
+`;
 
 const CartInfoGrid = styled.div`
   ${flexRow};
   justify-content: space-between;
-`
+`;
 
 const InfoItem = styled.div`
   padding-right: ${spacing.double_pad};
@@ -190,10 +212,10 @@ const InfoItem = styled.div`
     &:last-child {
       padding-right: ${spacing.double_pad};
     }
-  `}
-`
+  `};
+`;
 
 const CartItems = styled.ul`
   ${flexColumn};
   width: 100%;
-`
+`;
