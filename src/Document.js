@@ -73,7 +73,7 @@ const Main = styled.main`
   ${animationFadeIn(1000, 150)};
   ${flexColumn};
   width: 100vw;
-  position: fixed;
+  position: relative;
   min-height: 100vh;
   overflow-x: hidden;
   overflow-y: scroll;
@@ -82,7 +82,6 @@ const Main = styled.main`
   -webkit-overflow-scrolling: touch;
   padding-right: ${widths.sidebar_desktop};
   ${media.desktopNav`
-    position: relative;
     padding-right: 0;
     overflow-y: visible;
   `} &.cart-open {
