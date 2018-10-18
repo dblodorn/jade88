@@ -1,31 +1,31 @@
-import styled from 'styled-components'
-import { heights, spacing, shared, colors, widths, fonts } from './theme.json'
-import * as _ from './mixins'
+import styled from "styled-components";
+import { heights, spacing, shared, colors, widths, fonts } from "./theme.json";
+import * as _ from "./mixins";
 
 // DOM NODES
 const Section = styled.section`
   width: 100%;
   ${_.flexColumn};
-`
+`;
 
 const Article = styled.article`
   ${_.wrapperWidths};
   padding-left: ${spacing.double_pad};
   padding-right: ${spacing.double_pad};
-`
+`;
 
 const PadWrapper = styled.div`
   ${_.mainPadding};
   &.add-top-border {
     border-top: ${shared.border_thin};
   }
-`
+`;
 
 const GridWrapper = styled.ul`
   ${_.wrapperWidths};
   ${_.flexRowWrap};
   ${_.grid};
-`
+`;
 
 const ProportionWrapper = styled.div`
   height: 0;
@@ -35,11 +35,10 @@ const ProportionWrapper = styled.div`
   padding-bottom: ${props => `${props.Mobile}%` || `100%`};
   ${_.media.medium`
     padding-bottom: ${props => `${props.Desktop}%` || `50%`};
-  `}
-  ${_.media.big`
+  `} ${_.media.big`
     padding-bottom: ${props => `${props.Max}%` || `45%`};
-  `}
-`
+  `};
+`;
 
 // TYPE
 const H1 = styled.h1`
@@ -48,53 +47,53 @@ const H1 = styled.h1`
   color: ${props => props.theme.display_font_color}!important;
   font-family: ${fonts.display_font_a};
   text-transform: ${props => props.theme.display_case};
-`
+`;
 
 const H2 = styled.h2`
   ${_.mediumType};
   color: ${props => props.theme.display_font_color}!important;
   font-family: ${fonts.display_font_a};
-`
+`;
 
 const H3 = styled.h3`
   ${_.bodyType};
   padding-bottom: ${spacing.small_pad};
   color: ${props => props.theme.display_font_color}!important;
   font-family: ${fonts.display_font_a};
-`
+`;
 
 const H4 = styled.h4`
   ${_.mediumType};
   padding-bottom: ${spacing.small_pad};
   color: ${props => props.theme.display_font_color}!important;
   font-family: ${fonts.display_font_a};
-`
+`;
 
 const H5 = styled.h5`
   ${_.mediumType};
   padding-bottom: ${spacing.small_pad};
   font-family: ${fonts.display_font_a};
-`
+`;
 
 const H6 = styled.h6`
   ${_.bodyType};
   padding-bottom: ${spacing.small_pad};
   font-family: ${fonts.display_font_a};
-`
+`;
 
 const P = styled.p`
   ${_.bodyType};
   font-family: ${props => props.theme.body_copy_font};
-`
+`;
 
 const SmallP = styled.p`
   ${_.smallType};
   font-family: ${props => props.theme.body_copy_font};
-`
+`;
 
 const StyledButton = styled.button`
   ${_.buttonStyle};
-`
+`;
 
 const StyledMarkup = styled.div`
   margin-bottom: ${spacing.single_pad};
@@ -150,7 +149,7 @@ const StyledMarkup = styled.div`
     color: ${props => props.theme.display_font_color};
     font-family: ${props => props.theme.body_copy_font};
   }
-`
+`;
 
 // UI
 const NavItem = styled.li`
@@ -164,11 +163,12 @@ const NavItem = styled.li`
     &:last-child {
       padding-right: 0;
     }
-  `}
-  &.active {
-    pointer-events: none!important;
+  `} &.active {
+    pointer-events: none !important;
     text-decoration: underline;
-    * { color: ${colors.active_color}; }
+    * {
+      color: ${colors.active_color};
+    }
   }
   &.sidebar {
     ${_.media.desktopNav`
@@ -181,10 +181,11 @@ const NavItem = styled.li`
           padding-right: 0;
         }
       }
-    `}
+    `};
   }
-  &.top-horizontal {}
-`
+  &.top-horizontal {
+  }
+`;
 
 const SocialLink = styled.a`
   display: block;
@@ -194,7 +195,7 @@ const SocialLink = styled.a`
     width: 100%;
     height: auto;
   }
-`
+`;
 
 // WRAPPERS
 const LogoWrapperFixedTopRight = styled.div`
@@ -205,15 +206,15 @@ const LogoWrapperFixedTopRight = styled.div`
   ${_.media.medium`
     top: ${props => props.position_med};
     right: ${props => props.position_med};
-  `}
-`
+  `};
+`;
 
 const FullPageBgWrapper = styled.aside`
   ${_.fixedTopLeft};
   width: 100%;
   height: 100vh;
   z-index: 0;
-`
+`;
 
 const ModalWrapper = styled.div`
   ${_.flexCenteredAll};
@@ -225,8 +226,8 @@ const ModalWrapper = styled.div`
   padding: calc(${heights.header} / 2) 0;
   ${_.media.desktopNav`
     padding: calc(${heights.header} / 2);
-  `}
-`
+  `};
+`;
 
 const ModalContentWrapper = styled.div`
   ${_.flexCenteredAll};
@@ -235,7 +236,7 @@ const ModalContentWrapper = styled.div`
   height: 100%;
   max-width: 100rem;
   position: relative;
-`
+`;
 
 const CloseButton = styled.button`
   ${_.buttonInit};
@@ -248,11 +249,11 @@ const CloseButton = styled.button`
     width: 100%;
     height: 100%;
   }
-`
+`;
 
 const LozengeButton = styled.button`
   ${_.buttonStyle};
-`
+`;
 
 const BuyButton = styled.button`
   ${_.buttonInit};
@@ -263,11 +264,12 @@ const BuyButton = styled.button`
   font-family: ${fonts.sans};
   text-transform: uppercase;
   font-size: 2rem;
-  line-height: .7;
+  line-height: 0.7;
   color: ${colors.white};
   transition: transform 250ms ease-in-out;
   will-change: transition;
   border-radius: 50%;
+  text-align: center;
   transform: rotate(${props => props.startAngle || `25deg`});
   &:hover {
     transform: rotate(${props => props.endAngle || `-25deg`});
@@ -276,13 +278,12 @@ const BuyButton = styled.button`
     font-size: 2.75rem;
     width: ${props => props.size || `10rem`};
     height: ${props => props.size || `10rem`};
-  `}
-  svg {
+  `} svg {
     width: 100%;
     height: 100%;
     object-fit: contain;
   }
-`
+`;
 
 export {
   Section,
@@ -309,4 +310,4 @@ export {
   CloseButton,
   BuyButton,
   LozengeButton
-}
+};

@@ -35,14 +35,16 @@ const Document = props => {
           />
         )}
         <InfoPopout />
-        <Sidebar position={"right"} />
-        {props.ww >= breakpoints.desktop && (
-          <Fragment>
-            <Sidebar position={"left"} />
-            <Sidebar position={"top"} />
-            <Sidebar position={"bottom"} />
-          </Fragment>
-        )}
+        <SidebarWrapper>
+          <Sidebar position={"right"} />
+          {props.ww >= breakpoints.desktop && (
+            <Fragment>
+              <Sidebar position={"left"} />
+              <Sidebar position={"top"} />
+              <Sidebar position={"bottom"} />
+            </Fragment>
+          )}
+        </SidebarWrapper>
         <Main
           className={
             props.cart.isCartOpen
@@ -51,8 +53,8 @@ const Document = props => {
           }
         >
           <Shop />
+          <Footer />
         </Main>
-        <Footer />
       </Fragment>
     );
   } else {
@@ -87,6 +89,16 @@ const Main = styled.main`
   `} &.cart-open {
     transform: translateX(-35vw);
   }
+`;
+
+const SidebarWrapper = styled.div`
+  height: 100vh;
+  width: 100vw;
+  pointer-events: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 800;
 `;
 
 // NORMALIZE CSS

@@ -13,7 +13,7 @@ import {
   media,
   mediumType
 } from "./../styles/mixins";
-import { H2, BuyButton, LozengeButton } from "./../styles/components";
+import { H2, LozengeButton } from "./../styles/components";
 import { Close } from "./../components";
 import { widths, heights, colors, spacing } from "./../styles/theme.json";
 import LineItem from "./LineItem";
@@ -58,42 +58,44 @@ class Cart extends Component {
               />
             </CloseWrapper>
           </CartHeader>
-          <CartItems>{line_items}</CartItems>
-          <CartFooter>
-            <CartInfoGrid>
-              <InfoItem>
-                <div className="Cart-info__total Cart-info__small">
-                  Subtotal
-                </div>
-                <div className="Cart-info__pricing">
-                  <span className="pricing">
-                    $ {this.props.checkout.subtotalPrice}
-                  </span>
-                </div>
-              </InfoItem>
-              <InfoItem>
-                <div className="Cart-info__total Cart-info__small">Taxes</div>
-                <div className="Cart-info__pricing">
-                  <span className="pricing">
-                    $ {this.props.checkout.totalTax}
-                  </span>
-                </div>
-              </InfoItem>
-              <InfoItem>
-                <div className="Cart-info__total Cart-info__small">Total</div>
-                <div className="Cart-info__pricing">
-                  <span className="pricing">
-                    $ {this.props.checkout.totalPrice}
-                  </span>
-                </div>
-              </InfoItem>
-            </CartInfoGrid>
-            <Checkout>
-              <LozengeButton onClick={this.openCheckout}>
-                <span>Check Out</span>
-              </LozengeButton>
-            </Checkout>
-          </CartFooter>
+          <CartInner>
+            <CartItems>{line_items}</CartItems>
+            <CartFooter>
+              <CartInfoGrid>
+                <InfoItem>
+                  <div className="Cart-info__total Cart-info__small">
+                    Subtotal
+                  </div>
+                  <div className="Cart-info__pricing">
+                    <span className="pricing">
+                      $ {this.props.checkout.subtotalPrice}
+                    </span>
+                  </div>
+                </InfoItem>
+                <InfoItem>
+                  <div className="Cart-info__total Cart-info__small">Taxes</div>
+                  <div className="Cart-info__pricing">
+                    <span className="pricing">
+                      $ {this.props.checkout.totalTax}
+                    </span>
+                  </div>
+                </InfoItem>
+                <InfoItem>
+                  <div className="Cart-info__total Cart-info__small">Total</div>
+                  <div className="Cart-info__pricing">
+                    <span className="pricing">
+                      $ {this.props.checkout.totalPrice}
+                    </span>
+                  </div>
+                </InfoItem>
+              </CartInfoGrid>
+              <Checkout>
+                <LozengeButton onClick={this.openCheckout}>
+                  <span>Check Out</span>
+                </LozengeButton>
+              </Checkout>
+            </CartFooter>
+          </CartInner>
         </CartWrapper>
       </Fragment>
     );
@@ -117,7 +119,6 @@ const CartWrapper = styled.div`
   top: 0;
   z-index: 9000;
   background-color: ${colors.green};
-  padding-top: ${heights.header};
   z-index: 9000;
   transform: translateX(100vw);
   &.cart-open {
@@ -130,6 +131,10 @@ const CartWrapper = styled.div`
     width: ${widths.cart};
     transform: translateX(${widths.cart});
   `};
+`;
+
+const CartInner = styled.div`
+  position: relative;
 `;
 
 const CloseWrapper = styled.div`
@@ -176,9 +181,11 @@ const CartHeader = styled.header`
   padding-right: 1rem;
   width: 100%;
   height: ${heights.header};
-  position: absolute;
+  position: sticky;
   top: 0;
   left: 0;
+  z-index: 9000;
+  ${shadow};
   background-color: ${colors.purple};
   * {
     color: ${colors.white};
