@@ -29,19 +29,6 @@ const Hero = (props) =>
     <LogoWrapper>
       <LogoType/>
     </LogoWrapper>
-    <Cta className={props.scroll}>
-      <LozengeButton onClick={scrollToElement}>
-        <Down/><span>Roll With Us</span><Down/>
-      </LozengeButton>
-    </Cta>
-    <Carousel 
-      slides={slides}
-      navigation={false}
-      pagination={false}
-      captions={false}
-      autoplay={true}
-      transition_time={3000}
-    />
   </CarouselWrapper>
 
 export default connect(
