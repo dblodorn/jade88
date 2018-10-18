@@ -196,6 +196,7 @@ const CartFooter = styled.footer`
   ${mainPadding};
   justify-content: space-between;
   width: 100%;
+  margin-bottom: 6rem;
   ${media.desktopNav`
     ${flexRow};
   `};
