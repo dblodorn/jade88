@@ -18,9 +18,16 @@ const client = Client.buildClient({
 
 store.dispatch({type: 'CLIENT_CREATED', payload: client});
 
+client.collection.fetchAllWithProducts().then((collections) => {
+  store.dispatch({type: 'PRODUCTS_FOUND', payload: collections[0].products});
+});
+
+/*
 client.product.fetchAll().then((res) => {
   store.dispatch({type: 'PRODUCTS_FOUND', payload: res});
 });
+*/
+
 client.checkout.create().then((res) => {
   store.dispatch({type: 'CHECKOUT_FOUND', payload: res});
 });
