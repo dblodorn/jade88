@@ -143,6 +143,7 @@ const StyledMarkup = styled.div`
   }
   b {
     font-family: ${fonts.display_font_a}!important;
+    font-size: 1.65rem;
   }
   a {
     ${_.defaultLink};
