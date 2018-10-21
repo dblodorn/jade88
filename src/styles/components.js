@@ -143,6 +143,7 @@ const StyledMarkup = styled.div`
   }
   b {
     font-family: ${fonts.display_font_a}!important;
+    font-size: 1.65rem;
   }
   a {
     ${_.defaultLink};
@@ -262,8 +263,9 @@ const LozengeLink = styled.a`
 const BuyButton = styled.button`
   ${_.buttonInit};
   ${_.shadow};
-  width: ${props => props.sizeMobie || `7rem`};
-  height: ${props => props.sizeMobie || `7rem`};
+  ${_.flexCenteredAll};
+  width: ${props => props.sizeMobie || `7.5rem`};
+  height: ${props => props.sizeMobie || `7.5rem`};
   background-color: ${props => props.bgColor || colors.blue};
   font-family: ${fonts.sans};
   text-transform: uppercase;
@@ -274,6 +276,7 @@ const BuyButton = styled.button`
   will-change: transition;
   border-radius: 50%;
   text-align: center;
+  padding: 0;
   transform: rotate(${props => props.startAngle || `25deg`});
   &:hover {
     transform: rotate(${props => props.endAngle || `-25deg`});

@@ -100,7 +100,7 @@ const LogoWrapper = styled.div`
   left: 0;
   z-index: 900;
   opacity: 1;
-  padding: 4rem 1rem 12rem;
+  padding: 4rem 1rem 14rem;
   ${media.desktopNav`
     align-items: center;
     width: 100%;
@@ -119,8 +119,15 @@ const Cta = styled.div`
   opacity: 0;
   transition: opacity 300ms ease-in-out;
   will-change: opacity;
+  ${media.desktopNav`
+    height: 10rem;
+  `}
   &.at-top {
     ${slowBounce};
+    height: 12.5rem;
+    ${media.desktopNav`
+      height: 10rem;
+    `}
   }
 `;
 

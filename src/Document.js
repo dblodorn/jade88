@@ -11,11 +11,10 @@ import { animationFadeIn, flexColumn, media } from "./styles/mixins";
 import {
   colors,
   fonts,
-  heights,
   widths,
   breakpoints
 } from "./styles/theme.json";
-import { Sidebar, Footer } from "./components";
+import { Sidebar } from "./components";
 import { LoadingPage, Shop, InfoPopout } from "./views";
 import Cart from "./shopify/Cart";
 import { shop } from "./config.json";
@@ -53,7 +52,6 @@ const Document = props => {
           }
         >
           <Shop />
-          <Footer />
         </Main>
       </Fragment>
     );
@@ -73,10 +71,9 @@ export default connect(state => ({
 // MAIN STYLING
 const Main = styled.main`
   ${animationFadeIn(1000, 150)};
-  ${flexColumn};
   width: 100vw;
+  height: 100%;
   position: relative;
-  min-height: 100vh;
   overflow-x: hidden;
   overflow-y: scroll;
   will-change: transform;
@@ -92,7 +89,7 @@ const Main = styled.main`
 `;
 
 const SidebarWrapper = styled.div`
-  height: 100vh;
+  height: 100%;
   width: 100vw;
   pointer-events: none;
   position: fixed;

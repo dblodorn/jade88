@@ -6,7 +6,7 @@ import styled from 'styled-components'
 import { Products } from './../shopify'
 import { Section } from './../styles/components'
 import Hero from './Hero'
-import InfoPopout from './InfoPopout'
+import { Footer } from './../components'
 
 class Shop extends Component {
   render() {
@@ -21,6 +21,7 @@ class Shop extends Component {
             addVariantToCart={addVariantToCart}
           />
         </ShopSection>
+        <Footer/>
       </Fragment>
     )
   }  
@@ -30,4 +31,6 @@ export default connect((state) => state)(Shop);
 
 const ShopSection = styled(Section)`
   width: 100%;
+  position: relative;
+  flex-shrink: 0;
 `

@@ -40,7 +40,7 @@ const InfoWrapper = styled.div`
   ${flexCenteredAll};
   padding: 6rem 2rem 10rem;
   overflow-y: scroll;
-  height: 100vh;
+  height: 100%;
   width: 100vw;
   position: fixed;
   left: 0;

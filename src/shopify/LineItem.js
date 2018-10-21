@@ -40,9 +40,9 @@ class LineItem extends Component {
           </ContetntRow>
           <ContetntRow>
             <QuantityContainer>
-              <AdjustButton sizeMobie={`3.25rem`} size={`3rem`} startAngle={`0deg`} bgColor={`red`} onClick={() => this.decrementQuantity(this.props.line_item.id)}><span>-</span></AdjustButton>
+              <AdjustButton sizeMobie={`3.5rem`} size={`3rem`} startAngle={`0deg`} bgColor={`red`} onClick={() => this.decrementQuantity(this.props.line_item.id)}><span>-</span></AdjustButton>
               <span className="quantity">{this.props.line_item.quantity}</span>
-              <AdjustButton sizeMobie={`3.25rem`} size={`3rem`} startAngle={`0deg`} bgColor={`red`} onClick={() => this.incrementQuantity(this.props.line_item.id)}><span>+</span></AdjustButton>
+              <AdjustButton sizeMobie={`3.5rem`} size={`3rem`} startAngle={`0deg`} bgColor={`red`} onClick={() => this.incrementQuantity(this.props.line_item.id)}><span>+</span></AdjustButton>
             </QuantityContainer>
           </ContetntRow>
           <Price>
@@ -139,9 +139,11 @@ const Price = styled.div`
 const AdjustButton = styled(BuyButton)`
   ${flexCenteredAll};
   span {
-    font-size: 1.5rem;
+    font-size: 1.25rem;
     line-height: 1;
     display: block;
+    width: 100%;
+    padding-top: 1px;
   }
   &.remove {
     position: absolute;
