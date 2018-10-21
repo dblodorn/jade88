@@ -255,6 +255,10 @@ const LozengeButton = styled.button`
   ${_.buttonStyle};
 `;
 
+const LozengeLink = styled.a`
+  ${_.buttonStyle};
+`;
+
 const BuyButton = styled.button`
   ${_.buttonInit};
   ${_.shadow};
@@ -309,5 +313,6 @@ export {
   ModalContentWrapper,
   CloseButton,
   BuyButton,
-  LozengeButton
+  LozengeButton,
+  LozengeLink
 };
