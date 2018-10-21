@@ -13,7 +13,7 @@ import {
   media,
   mediumType
 } from "./../styles/mixins";
-import { H2, LozengeButton } from "./../styles/components";
+import { H2, LozengeButton, H3 } from "./../styles/components";
 import { Close } from "./../components";
 import { widths, heights, colors, spacing } from "./../styles/theme.json";
 import LineItem from "./LineItem";
@@ -40,7 +40,6 @@ class Cart extends Component {
         />
       );
     });
-
     return (
       <Fragment>
         <CartButtonWrapper
@@ -59,6 +58,7 @@ class Cart extends Component {
             </CloseWrapper>
           </CartHeader>
           <CartInner>
+            {(this.props.checkout.lineItems.length <= 0) && <CartEmpty><H3>🤭 YOUR CART IS EMPTY!</H3></CartEmpty>}
             <CartItems>{line_items}</CartItems>
             <CartFooter>
               <CartInfoGrid>
@@ -72,6 +72,7 @@ class Cart extends Component {
                     </span>
                   </div>
                 </InfoItem>
+              {/* 
                 <InfoItem>
                   <div className="Cart-info__total Cart-info__small">Taxes</div>
                   <div className="Cart-info__pricing">
@@ -88,8 +89,12 @@ class Cart extends Component {
                     </span>
                   </div>
                 </InfoItem>
+              */}
               </CartInfoGrid>
               <Checkout>
+                <LozengeButton className={'shop-more'} onClick={this.props.handleCartClose}>
+                  <span>Continue Shopping</span>
+                </LozengeButton>
                 <LozengeButton onClick={this.openCheckout}>
                   <span>Check Out</span>
                 </LozengeButton>
@@ -127,11 +132,21 @@ const CartWrapper = styled.div`
   ${media.desktopNav`
     width: 75vw;
     transform: translateX(75vw);
-  `} ${media.big`
+  `} 
+  ${media.big`
     width: ${widths.cart};
     transform: translateX(${widths.cart});
   `};
 `;
+
+const CartEmpty = styled.div`
+  width: 100%;
+  background-color: ${colors.red};
+  padding: ${spacing.double_pad};
+  * {
+    color: ${colors.white};
+  }
+`
 
 const CartInner = styled.div`
   position: relative;
@@ -165,12 +180,21 @@ const CartButtonWrapper = styled.div`
 `;
 
 const Checkout = styled.div`
-  ${flexRowCenteredVert};
+  ${flexColumn};
+  align-items: center;
   position: relative;
   padding-top: 1.5rem;
   padding-bottom: 4rem;
+  .shop-more {
+    margin-bottom: ${spacing.double_pad};
+  }
   ${media.desktopNav`
+    ${flexRowCenteredVert};
     padding-top: 0;
+    .shop-more {
+      margin-right: ${spacing.double_pad};
+      margin-bottom: 0;
+    }
   `};
 `;
 
@@ -204,7 +228,12 @@ const CartFooter = styled.footer`
 
 const CartInfoGrid = styled.div`
   ${flexRow};
-  justify-content: space-between;
+  justify-content: center;
+  text-align: center;
+  ${media.desktopNav`
+    text-align: left;
+    justify-content: space-between;
+  `};
 `;
 
 const InfoItem = styled.div`

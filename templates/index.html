@@ -68,10 +68,15 @@
       ::-webkit-scrollbar {
         display: none;
       }
+      #modal {
+        z-index: 12000;
+        position: fixed;
+      }
     </style>
     <link rel="stylesheet" href="/assets/swiper.css">
   </head>
   <body bgcolor="<%= htmlWebpackPlugin.options.bgcolor %>">
+    <div id="modal"></div>
     <div id="root"></div>
   </body>
 </html>

@@ -472,7 +472,7 @@ const fixedHero = (top, bottom, left) => {
 const fixedWindow = css`
   ${fancyScroll};
   padding: ${heights.header} 0 ${heights.footer};
-  width: 50vw;
+  width: 100vw;
   height: 100vh;
   position: fixed;
   top: 0;

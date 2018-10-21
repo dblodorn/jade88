@@ -1,35 +1,32 @@
 import React from "react";
 import styled from "styled-components";
-import {
-  flexRow,
-  mainPadding,
-  media,
-  flexRowCenteredAll,
-  defaultLink
-} from "./../styles/mixins";
+import { mainPadding, media, flexColumnCentered } from "./../styles/mixins";
+import { LozengeLink } from "./../styles/components";
 import { heights, colors, spacing } from "./../styles/theme.json";
+import Policies from "./Policies";
 
 export default () => (
   <FooterWrapper>
-    <MailTo href="mailto:hi@jadeeightyeight.com">hi@jadeeightyeight.com</MailTo>
+    <LozengeLink href="mailto:hi@jadeeightyeight.com">
+      <span>Contact Us</span>
+    </LozengeLink>
+    <Policies />
   </FooterWrapper>
 );
 
 // STYLES
 const FooterWrapper = styled.footer`
-  ${flexRow};
+  ${flexColumnCentered};
   ${mainPadding};
   padding-bottom: ${spacing.big_pad};
   position: relative;
   text-align: center;
-  justify-content: center;
+  background-color: ${colors.green};
   ${media.desktopNav`
-    ${flexRowCenteredAll};
     height: ${heights.footer};
-    background-color: ${colors.green};
+    justify-content: center;
   `};
-`;
-
-const MailTo = styled.a`
-  ${defaultLink};
+  a {
+    margin-bottom: ${spacing.double_pad};
+  }
 `;

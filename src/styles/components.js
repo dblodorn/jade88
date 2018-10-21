@@ -143,6 +143,7 @@ const StyledMarkup = styled.div`
   }
   b {
     font-family: ${fonts.display_font_a}!important;
+    font-size: 1.65rem;
   }
   a {
     ${_.defaultLink};
@@ -255,6 +256,10 @@ const LozengeButton = styled.button`
   ${_.buttonStyle};
 `;
 
+const LozengeLink = styled.a`
+  ${_.buttonStyle};
+`;
+
 const BuyButton = styled.button`
   ${_.buttonInit};
   ${_.shadow};
@@ -311,5 +316,6 @@ export {
   ModalContentWrapper,
   CloseButton,
   BuyButton,
-  LozengeButton
+  LozengeButton,
+  LozengeLink
 };
