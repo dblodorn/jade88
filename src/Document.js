@@ -7,7 +7,7 @@ import {
   updateQuantityInCart,
   removeLineItemInCart
 } from "./state/actions";
-import { animationFadeIn, flexColumn, media } from "./styles/mixins";
+import { animationFadeIn, media } from "./styles/mixins";
 import {
   colors,
   fonts,
@@ -23,6 +23,17 @@ const Document = props => {
   if (props.cart) {
     return (
       <Fragment>
+        {shop && (
+          <Cart
+            checkout={props.cart.checkout}
+            isCartOpen={props.cart.isCartOpen}
+            handleCartClose={handleCartClose}
+            handleCartOpen={handleCartOpen}
+            updateQuantityInCart={updateQuantityInCart}
+            removeLineItemInCart={removeLineItemInCart}
+          />
+        )}
+        <InfoPopout />
         <SidebarWrapper>
           <Sidebar position={"right"} />
           {props.ww >= breakpoints.desktop && (
@@ -68,6 +79,7 @@ const Main = styled.main`
   will-change: transform;
   transition: transform 400ms ease-in-out;
   -webkit-overflow-scrolling: touch;
+  padding-right: ${widths.sidebar_desktop};
   ${media.desktopNav`
     padding-right: 0;
     overflow-y: visible;
