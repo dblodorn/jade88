@@ -296,7 +296,12 @@ const spin = keyframes`
 `
 
 const animationRotate = css`
-  animation: ${spin} 700ms linear 0s infinite normal;
+  animation: ${spin} 500ms linear 0s infinite normal;
+  animation-fill-mode: forwards;
+`
+
+const slowRotate = css`
+  animation: ${spin} 3000ms linear 1500ms infinite normal;
   animation-fill-mode: forwards;
 `
 
@@ -562,5 +567,6 @@ export {
   fixedWindow,
   transTransform,
   staggeredColor,
-  slowBounce
+  slowBounce,
+  slowRotate
 }

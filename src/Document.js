@@ -7,7 +7,7 @@ import {
   updateQuantityInCart,
   removeLineItemInCart
 } from "./state/actions";
-import { animationFadeIn, flexColumn, media } from "./styles/mixins";
+import { animationFadeIn, media } from "./styles/mixins";
 import {
   colors,
   fonts,
@@ -44,14 +44,8 @@ const Document = props => {
             </Fragment>
           )}
         </SidebarWrapper>
-        <Main
-          className={
-            props.cart.isCartOpen
-              ? `cart-open ${props.header_style}`
-              : props.header_style
-          }
-        >
-          <Shop />
+        <Main className={props.cart.isCartOpen ? `cart-open ${props.header_style}` : props.header_style}>
+          <Shop/>
         </Main>
       </Fragment>
     );

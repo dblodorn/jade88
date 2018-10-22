@@ -1,6 +1,5 @@
-import React, { Component, Fragment } from "react";
+import React, { Component } from "react";
 import styled from "styled-components";
-import Spinner from "./Spinner";
 import {
   absoluteCentered,
   opacityTransition,
@@ -38,9 +37,6 @@ export default class extends Component {
             Fit={this.props.fit}
           />
         </ImgWrapper>
-        {!this.state.loaded && (
-          <Spinner size={"4rem"} color={colors.white} stroke={1} />
-        )}
       </Wrapper>
     );
   }

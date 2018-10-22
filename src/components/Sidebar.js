@@ -3,16 +3,15 @@ import { connect } from 'react-redux'
 import styled, { css } from 'styled-components'
 import { shadow, transTransform } from './../styles/mixins'
 import { colors, widths, breakpoints } from './../styles/theme.json'
-import { meta_defaults } from './../config.json'
 import Logo from './Logo'
 import Ticker from './Ticker'
 
 const manifesto = `We mean celebration.&nbsp;&nbsp;&nbsp;&nbsp;We mean indulgence.&nbsp;&nbsp;&nbsp;&nbsp;We mean extravagance.&nbsp;&nbsp;&nbsp;&nbsp;Be extra.&nbsp;&nbsp;&nbsp;&nbsp;Be mega.&nbsp;&nbsp;&nbsp;&nbsp;Be moisturized.&nbsp;&nbsp;&nbsp;&nbsp;Roll with us.&nbsp;&nbsp;&nbsp;&nbsp;We mean celebration.&nbsp;&nbsp;&nbsp;&nbsp;We mean indulgence.&nbsp;&nbsp;&nbsp;&nbsp;We mean extravagance.&nbsp;&nbsp;&nbsp;&nbsp;Be extra.&nbsp;&nbsp;&nbsp;&nbsp;Be mega.&nbsp;&nbsp;&nbsp;&nbsp;Be moisturized.&nbsp;&nbsp;&nbsp;&nbsp;Roll with us.`
 
 const Sidebar = (props) =>
-  <SidebarWrapper className={(props.cart.isCartOpen || props.info || ((props.scroll == 'down') && (props.ww >= breakpoints.desktop))) ? `${props.position} cart-open` : `${props.position} ${props.scroll}`}>
+  <SidebarWrapper className={(props.cart.isCartOpen || props.info || !props.fonts || ((props.scroll == 'down') && (props.ww >= breakpoints.desktop))) ? `${props.position} cart-open` : `${props.position} ${props.scroll}`}>
     <SidebarTop>
-      <Logo theme={'a'} title={meta_defaults.title} orientation={props.orientation}/>
+      <Logo/>
     </SidebarTop>
     <TickerFlip className={props.position}>
       <TickerWrapper className={props.position}>
@@ -20,7 +19,7 @@ const Sidebar = (props) =>
       </TickerWrapper>
     </TickerFlip>
     <SidebarBottom>
-      <Logo theme={'a'} title={meta_defaults.title}/>
+      <Logo/>
     </SidebarBottom>
   </SidebarWrapper>
 
@@ -29,7 +28,8 @@ export default connect(
     cart: state.cart,
     info: state.info,
     scroll: state.scroll_direction,
-    ww: state.resize_state.window_width
+    ww: state.resize_state.window_width,
+    fonts: state.fonts_loaded
   })
 )(Sidebar)
 
