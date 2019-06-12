@@ -43,13 +43,13 @@ const Down = () => (
 const Hero = props => (
   <CarouselWrapper>
     <LogoWrapper>
-      <LogoType />
+      <LogoType/>
     </LogoWrapper>
     <Cta className={props.scroll}>
       <LozengeButton onClick={scrollToElement}>
-        <Down />
+        <Down/>
         <span>Roll With Us</span>
-        <Down />
+        <Down/>
       </LozengeButton>
     </Cta>
     <Carousel

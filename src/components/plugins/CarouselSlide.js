@@ -10,7 +10,7 @@ const CarouselSlide = (props) => {
   return (
     <InnerSlide className={`${props.slideData.slide_type}-slide`}>
       <SlideWrapper>
-        <FitImage src={(props.window_width >= breakpoints.medium) ? props.slideData.image.large : props.slideData.image.medium} fit={props.slideData.image_style}/> :
+        <FitImage src={(props.window_width >= breakpoints.medium) ? props.slideData.image.large : props.slideData.image.medium} fit={props.slideData.image_style}/>
       </SlideWrapper>
     </InnerSlide>
   )

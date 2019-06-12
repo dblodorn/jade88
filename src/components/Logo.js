@@ -1,6 +1,6 @@
 import React from 'react'
-import styled, { ThemeProvider } from 'styled-components'
-import { themeA, themes } from '../styles/theme'
+import styled from 'styled-components'
+import { slowRotate, absoluteCentered } from './../styles/mixins'
 import { widths } from './../styles/theme.json'
 
 export default () =>
@@ -19,16 +19,20 @@ export default () =>
     </svg>
   </LogoWrapper>
 
+// STYLES
 const LogoWrapper = styled.div`
-  object-fit: contain;
   display: block;
   width: ${widths.sidebar_desktop};
   height: ${widths.sidebar_desktop};
   background-color: #18988B;
   padding: .5rem;
   svg {
+    ${slowRotate};
+    ${absoluteCentered};
+    object-fit: contain;
     width: 100%;
     height: 100%;
+    display: block;
     #color {
       fill: ${props => props.theme.logo_color}!important;
     }

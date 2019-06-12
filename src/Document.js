@@ -44,14 +44,8 @@ const Document = props => {
             </Fragment>
           )}
         </SidebarWrapper>
-        <Main
-          className={
-            props.cart.isCartOpen
-              ? `cart-open ${props.header_style}`
-              : props.header_style
-          }
-        >
-          <Shop />
+        <Main className={props.cart.isCartOpen ? `cart-open ${props.header_style}` : props.header_style}>
+          <Shop/>
         </Main>
       </Fragment>
     );

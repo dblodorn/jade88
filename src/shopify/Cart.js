@@ -42,9 +42,7 @@ class Cart extends Component {
     });
     return (
       <Fragment>
-        <CartButtonWrapper
-          className={this.props.cart.isCartOpen && "cart-open"}
-        >
+        <CartButtonWrapper className={this.props.cart.isCartOpen || !this.props.fonts  && "cart-open"}>
           <CartButton clickFunction={this.props.handleCartOpen} />
         </CartButtonWrapper>
         <CartWrapper className={this.props.cart.isCartOpen && "cart-open"}>
@@ -72,24 +70,6 @@ class Cart extends Component {
                     </span>
                   </div>
                 </InfoItem>
-              {/* 
-                <InfoItem>
-                  <div className="Cart-info__total Cart-info__small">Taxes</div>
-                  <div className="Cart-info__pricing">
-                    <span className="pricing">
-                      $ {this.props.checkout.totalTax}
-                    </span>
-                  </div>
-                </InfoItem>
-                <InfoItem>
-                  <div className="Cart-info__total Cart-info__small">Total</div>
-                  <div className="Cart-info__pricing">
-                    <span className="pricing">
-                      $ {this.props.checkout.totalPrice}
-                    </span>
-                  </div>
-                </InfoItem>
-              */}
               </CartInfoGrid>
               <Checkout>
                 <LozengeButton className={'shop-more'} onClick={this.props.handleCartClose}>
@@ -108,7 +88,8 @@ class Cart extends Component {
 }
 
 export default connect(state => ({
-  cart: state.cart
+  cart: state.cart,
+  fonts: state.fonts_loaded
 }))(Cart);
 
 // STYLES

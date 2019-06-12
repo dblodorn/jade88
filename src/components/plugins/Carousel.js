@@ -11,7 +11,7 @@ class Carousel extends Component {
     this.state = {
       playing: true,
       autoplay: true,
-      transitionTime: this.props.transition_time || 1500
+      transitionTime: 1500
     }
   }
 

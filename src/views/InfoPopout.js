@@ -11,7 +11,7 @@ const info = `<h2>Relax and indulge yourself with the cooling, massaging action 
 
 const InfoPopup = (props) =>
   <Fragment>
-    <InfoButtonWrapper className={(props.info || props.scroll == 'down') && 'info-open'}>
+    <InfoButtonWrapper className={(props.info || !props.fonts) && 'info-open'}>
       <BuyButton bgColor={colors.blue} startAngle={`20deg`} endAngle={`-20deg`} className="App__view-cart" onClick={() => props.info_toggle(!props.info)}><span>Info</span></BuyButton>
     </InfoButtonWrapper>
     <InfoWrapper className={props.info && 'info-open'}>
@@ -25,7 +25,8 @@ const InfoPopup = (props) =>
 export default connect(
   state => ({
     info: state.info,
-    scroll: state.scroll_direction
+    scroll: state.scroll_direction,
+    fonts: state.fonts_loaded
   }),
   dispatch => ({
     info_toggle: (bool) => dispatch(setInfoState(bool))
