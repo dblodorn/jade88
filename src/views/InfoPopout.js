@@ -3,13 +3,11 @@ import { connect } from 'react-redux'
 import styled from 'styled-components'
 import { setInfoState } from './../state/actions'
 import { Close } from './../components'
-import { media, shadow, fancyScroll, transTransform, flexCenteredAll } from './../styles/mixins'
-import { StyledMarkup, BuyButton } from './../styles/components'
-import { colors, heights, widths } from './../styles/theme.json'
+import * as _ from "./../styles/mixins"
+import { BuyButton } from './../styles/components'
+import { colors, widths, fonts } from './../styles/theme.json'
 
-const info = `<h2>Relax and indulge yourself with the cooling, massaging action of the roller.</h2><p>Improve blood circulation and tighten up those pores.</p><p>Reduce puffiness and dark circles.</p><p>Massage nasty toxins from your body through lymphatic massage.</p><p>Evenly distribute and soak facial tonics and oils deep into your skin as you roll.</p>`
-
-const InfoPopup = (props) =>
+const InfoPopup = props =>
   <Fragment>
     <InfoButtonWrapper className={(props.info || !props.fonts) && 'info-open'}>
       <BuyButton bgColor={colors.blue} startAngle={`20deg`} endAngle={`-20deg`} className="App__view-cart" onClick={() => props.info_toggle(!props.info)}><span>Info</span></BuyButton>
@@ -18,7 +16,7 @@ const InfoPopup = (props) =>
       <CloseWrapper>
         <Close clickFunction={() => props.info_toggle(!props.info)} color={colors.white}/>
       </CloseWrapper>
-      <StyledMarkup dangerouslySetInnerHTML={{__html: info }}/>
+      <InfoCopy dangerouslySetInnerHTML={{__html: props.infoCopy }}/>
     </InfoWrapper>
   </Fragment>
 
@@ -35,36 +33,33 @@ export default connect(
 
 // STYLES
 const InfoWrapper = styled.div`
-  ${fancyScroll};
-  ${shadow};
-  ${transTransform};
-  ${flexCenteredAll};
-  padding: 6rem 2rem 10rem;
+  ${_.fancyScroll};
+  ${_.shadow};
+  ${_.transTransform};
   overflow-y: scroll;
-  height: 100%;
+  -webkit-overflow-scrolling: touch;
   width: 100vw;
+  height: 100vh;
   position: fixed;
   left: 0;
   top: 0;
   background-color: ${colors.green};
-  padding-top: ${heights.header};
   z-index: 9000;
   transform: translateX(-100vw);
   &.info-open {
     transform: translateX(0);
   }
-  ${media.desktopNav`
+  ${_.media.desktopNav`
     width: 75vw;
-    padding: 6rem 6rem 10rem;
   `}
-  ${media.big`
+  ${_.media.big`
     width: ${widths.cart};
   `}
 `
 
 const InfoButtonWrapper = styled.div`
-  ${flexCenteredAll};
-  ${transTransform};
+  ${_.flexCenteredAll};
+  ${_.transTransform};
   z-index: 1000;
   position: fixed;
   top: 9rem;
@@ -73,14 +68,40 @@ const InfoButtonWrapper = styled.div`
     transform: translateY(-20rem) translateX(-20rem);
     pointer-events: none;
   }
-  ${media.desktopNav`
+  ${_.media.desktopNav`
     top: 3.5rem;
     left: 4rem;
   `}
 `
 
+const InfoCopy = styled.div`
+  padding: 2rem 3rem 6rem;
+  ${_.media.desktopNav`
+    padding: 2rem 6rem 6rem;
+  `}
+  p {
+    ${_.bodyType};
+    color: ${colors.black};
+    font-family: ${fonts.display_font_a};
+    padding-bottom: 1.5rem;
+  }
+  ul {
+    padding-bottom: 1.5rem;
+    list-style-type: circle;
+    padding-left: 2rem;
+    li {
+      ${_.smallType};
+      padding-bottom: .5rem;
+    }
+  }
+`
+
 const CloseWrapper = styled.div`
-  position: absolute;
-  top: 1rem;
-  right: 1rem;
+  position: sticky;
+  top: 0;
+  right: 0;
+  width: 100%;
+  padding: 1rem;
+  display: flex;
+  justify-content: flex-end;
 `

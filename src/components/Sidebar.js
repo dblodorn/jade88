@@ -6,8 +6,6 @@ import { colors, widths, breakpoints } from './../styles/theme.json'
 import Logo from './Logo'
 import Ticker from './Ticker'
 
-const manifesto = `We mean celebration.&nbsp;&nbsp;&nbsp;&nbsp;We mean indulgence.&nbsp;&nbsp;&nbsp;&nbsp;We mean extravagance.&nbsp;&nbsp;&nbsp;&nbsp;Be extra.&nbsp;&nbsp;&nbsp;&nbsp;Be mega.&nbsp;&nbsp;&nbsp;&nbsp;Be moisturized.&nbsp;&nbsp;&nbsp;&nbsp;Roll with us.&nbsp;&nbsp;&nbsp;&nbsp;We mean celebration.&nbsp;&nbsp;&nbsp;&nbsp;We mean indulgence.&nbsp;&nbsp;&nbsp;&nbsp;We mean extravagance.&nbsp;&nbsp;&nbsp;&nbsp;Be extra.&nbsp;&nbsp;&nbsp;&nbsp;Be mega.&nbsp;&nbsp;&nbsp;&nbsp;Be moisturized.&nbsp;&nbsp;&nbsp;&nbsp;Roll with us.`
-
 const Sidebar = (props) =>
   <SidebarWrapper className={(props.cart.isCartOpen || props.info || !props.fonts || ((props.scroll == 'down') && (props.ww >= breakpoints.desktop))) ? `${props.position} cart-open` : `${props.position} ${props.scroll}`}>
     <SidebarTop>
@@ -15,7 +13,7 @@ const Sidebar = (props) =>
     </SidebarTop>
     <TickerFlip className={props.position}>
       <TickerWrapper className={props.position}>
-        <Ticker copy={manifesto}/>
+        {props.apiData && <Ticker copy={`${props.apiData.options.banner_text}`}/>}
       </TickerWrapper>
     </TickerFlip>
     <SidebarBottom>
@@ -25,6 +23,7 @@ const Sidebar = (props) =>
 
 export default connect(
   state => ({
+    apiData: state.apiData,
     cart: state.cart,
     info: state.info,
     scroll: state.scroll_direction,

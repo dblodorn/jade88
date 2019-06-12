@@ -39,8 +39,8 @@ const TickerWrapper = styled.div`
     line-height: 1.1;
   }
   .marquee3k__copy {
-    padding-left: 2rem;
-    padding-right: 10rem;
+    padding-left: 0;
+    padding-right: 0;
     box-sizing: border-box;
   }
 `

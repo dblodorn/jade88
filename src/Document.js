@@ -14,7 +14,7 @@ import {
   widths,
   breakpoints
 } from "./styles/theme.json";
-import { Sidebar } from "./components";
+import { Sidebar, Head } from "./components";
 import { LoadingPage, Shop, InfoPopout } from "./views";
 import Cart from "./shopify/Cart";
 import { shop } from "./config.json";
@@ -33,7 +33,16 @@ const Document = props => {
             removeLineItemInCart={removeLineItemInCart}
           />
         )}
-        <InfoPopout />
+        {props.apiData && 
+          <Fragment>
+            <Head
+              title={props.apiData.options.meta_title}
+              description={props.apiData.options.meta_description}
+              social_image={props.apiData.options.social_card}
+            />
+            <InfoPopout infoCopy={props.apiData.options.about_copy} />
+          </Fragment>
+        }
         <SidebarWrapper>
           <Sidebar position={"right"} />
           {props.ww >= breakpoints.desktop && (
@@ -55,6 +64,7 @@ const Document = props => {
 };
 
 export default connect(state => ({
+  apiData: state.apiData,
   ww: state.resize_state.window_width,
   router: state.router,
   cart: state.cart,

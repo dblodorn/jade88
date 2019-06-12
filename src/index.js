@@ -5,11 +5,13 @@ import WebFont from 'webfontloader'
 import throttle from 'lodash/throttle'
 import mixin from 'lodash/mixin'
 import _ from 'lodash/wrapperLodash'
-import { setResizeState, hasTouch, fontsLoaded } from './state/actions'
+import { fetchApiData, setResizeState, hasTouch, fontsLoaded } from './state/actions'
 import App from './App'
 import config, { shopify } from './config.json'
 import { store } from './state/store'
 import Client from 'shopify-buy';
+
+store.dispatch(fetchApiData())
 
 const client = Client.buildClient({
   storefrontAccessToken: shopify.token,
@@ -22,11 +24,9 @@ client.collection.fetchAllWithProducts().then((collections) => {
   store.dispatch({type: 'PRODUCTS_FOUND', payload: collections[0].products});
 });
 
-/*
 client.product.fetchAll().then((res) => {
   store.dispatch({type: 'PRODUCTS_FOUND', payload: res});
 });
-*/
 
 client.checkout.create().then((res) => {
   store.dispatch({type: 'CHECKOUT_FOUND', payload: res});

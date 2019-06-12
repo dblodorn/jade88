@@ -7,6 +7,7 @@ import FitImage from './utils/FitImage'
 import Spinner from './utils/Spinner'
 import Close from './utils/Close'
 import LogoType from './LogoType'
+import Head from './utils/Head'
 
 // Plugin Compnents - most have external dependencies
 import Ticker from './Ticker'
@@ -20,5 +21,6 @@ export {
   LogoType,
   Ticker,
   Carousel,
-  Footer
+  Footer,
+  Head
 }
