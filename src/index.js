@@ -5,7 +5,7 @@ import WebFont from 'webfontloader'
 import throttle from 'lodash/throttle'
 import mixin from 'lodash/mixin'
 import _ from 'lodash/wrapperLodash'
-import { setResizeState, hasTouch, fontsLoaded } from './state/actions'
+import { fetchApiData, setResizeState, hasTouch, fontsLoaded } from './state/actions'
 import App from './App'
 import config, { shopify } from './config.json'
 import { store } from './state/store'
@@ -21,6 +21,8 @@ store.dispatch({type: 'CLIENT_CREATED', payload: client});
 client.collection.fetchAllWithProducts().then((collections) => {
   store.dispatch({type: 'PRODUCTS_FOUND', payload: collections[0].products});
 });
+
+store.dispatch(fetchApiData());
 
 /*
 client.product.fetchAll().then((res) => {

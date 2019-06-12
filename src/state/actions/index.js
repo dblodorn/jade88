@@ -15,7 +15,10 @@ import {
   addVariantToCart
 } from './a_cart'
 
+import fetchApiData from './a_api-data'
+
 export {
+  fetchApiData,
   setResizeState,
   hasTouch,
   fontsLoaded,
